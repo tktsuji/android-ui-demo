@@ -74,4 +74,8 @@ public class User {
     public static void clearTag() {
         tags.clear();
     }
+
+    public static void purgeUser() {
+        instance = new User();
+    }
 }
