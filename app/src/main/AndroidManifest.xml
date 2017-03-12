@@ -15,7 +15,9 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginActivity"
-            android:label="Login">
+            android:label=""
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +26,8 @@
         </activity>
         <activity
             android:name=".CreateAnAccountActivity"
-            android:label="Create Account" />
+            android:label="Create Account"
+            android:parentActivityName=".LoginActivity"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"

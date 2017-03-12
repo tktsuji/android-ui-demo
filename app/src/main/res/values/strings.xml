@@ -18,6 +18,14 @@
     <string name="buttoncreateaccount">Create Account</string>
     <string name="title_activity_main">MainActivity</string>
 
+    <string name="createAccount_umail">UCSB Email</string>
+    <string name="createAccount_password">Password</string>
+    <string name="createAccount_username">Username</string>
+    <string name="createAccount_lastName">Last Name</string>
+    <string name="createAccount_confirmPassword">Confirm Password</string>
+    <string name="createAccount_accountInfo">Account Information:</string>
+    <string name="createAccount_personalDetails">Personal Details:</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 

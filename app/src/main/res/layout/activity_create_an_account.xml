@@ -11,12 +11,6 @@
     android:orientation="vertical"
     tools:context="edu.ucsb.cs.cs185.group.a185.CreateAnAccountActivity">
 
-    <TextView
-        android:text="UCSB Email:"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView" />
-
     <EditText
         android:id="@+id/umailText"
         android:maxLines="1"
@@ -24,13 +18,7 @@
         android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="UCSB Email"/>
-
-    <TextView
-        android:text="Password:"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView2" />
+        android:hint="@string/createAccount_umail"/>
 
     <EditText
         android:id="@+id/passwordText"
@@ -39,28 +27,16 @@
         android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"/>
-
-    <TextView
-        android:text="Confirm Password:"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView3" />
+        android:hint="@string/createAccount_password"/>
 
     <EditText
         android:id="@+id/confirmPasswordText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:maxLines="1"
         android:imeOptions="actionNext"
         android:inputType="text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Confirm Password"/>
-
-    <TextView
-        android:text="Name:"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView4" />
+        android:hint="@string/createAccount_confirmPassword"/>
 
     <EditText
         android:id="@+id/UsernameText"
@@ -69,13 +45,7 @@
         android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name"/>
-
-    <TextView
-        android:text="Major:"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView5" />
+        android:hint="@string/createAccount_username"/>
 
     <EditText
         android:id="@+id/MajorText"
@@ -90,6 +60,7 @@
         android:id="@+id/confirmButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Confirm"/>
+        android:text="Confirm"
+        android:backgroundTint="@color/colorAccent"/>
 
 </LinearLayout>
