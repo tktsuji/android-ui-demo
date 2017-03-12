@@ -8,9 +8,18 @@ import java.util.List;
  */
 
 public class User {
-    private static String umail, password, major, username, gradYear;
+    private static String umail, password, major, username, userLevel;
     private static List<String> tags;
     private static User instance = null;
+
+    public User() {
+        umail = null;
+        password = null;
+        major = null;
+        username = null;
+        userLevel = null;
+        tags = new ArrayList<String>();
+    }
 
     public static User getInstance() {
         if(instance == null) {
@@ -51,12 +60,12 @@ public class User {
         return username;
     }
 
-    public static void setGradYear(String gradYear_arg) {
-        gradYear = gradYear_arg;
+    public static void setUserLevel(String userLevel_arg) {
+        userLevel = userLevel_arg;
     }
 
-    public static String getGradYear() {
-        return gradYear;
+    public static String getUserLevel() {
+        return userLevel;
     }
 
     public static List<String> getTags()  {

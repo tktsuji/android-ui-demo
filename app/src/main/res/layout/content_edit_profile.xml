@@ -13,24 +13,4 @@
     tools:context="edu.ucsb.cs.cs185.group.a185.EditProfileActivity"
     tools:showIn="@layout/activity_edit_profile">
 
-    <EditText
-        android:id="@+id/editProfileUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <EditText
-        android:id="@+id/editProfileMajor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <EditText
-        android:id="@+id/editProfileGradYear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <EditText
-        android:id="@+id/editProfileTags"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
 </RelativeLayout>
