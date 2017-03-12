@@ -10,4 +10,5 @@
     <dimen name="login_editTextHeight">64dp</dimen>
     <dimen name="login_buttonHeight">72dp</dimen>
     <dimen name="login_buttonText">20sp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>

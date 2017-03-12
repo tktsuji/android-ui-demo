@@ -5,12 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="edu.ucsb.cs.cs185.group.a185.ProfileActivity">
+    tools:context="edu.ucsb.cs.cs185.group.a185.EditProfileActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
@@ -22,34 +21,46 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_profile" />
+    <include layout="@layout/content_edit_profile" />
 
-    <TextView
-        android:id="@+id/profileUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:id="@+id/profileMajor"
+    <EditText
+        android:id="@+id/editProfileUsername"
+        android:hint="Username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/profileUsername"/>
+        android:layout_centerVertical="true"/>
 
-    <TextView
-        android:id="@+id/profileUserLevel"
+    <EditText
+        android:id="@+id/editProfileMajor"
+        android:hint="Major"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/profileMajor"/>
+        android:layout_below="@id/editProfileUsername" />
 
-    <TextView
-        android:id="@+id/profileTags"
+    <EditText
+        android:id="@+id/editProfileUserLevel"
+        android:hint="UserLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/profileUserLevel"/>
+        android:layout_below="@id/editProfileMajor"/>
+
+    <EditText
+        android:id="@+id/editProfileTags"
+        android:hint="Tags"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/editProfileUserLevel"/>
+
+    <Button
+        android:id="@+id/editProfileConfirmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Confirm"
+        android:layout_below="@id/editProfileTags"/>
 
 </RelativeLayout>
