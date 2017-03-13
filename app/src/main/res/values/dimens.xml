@@ -7,8 +7,14 @@
     <dimen name="nav_header_height">160dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
-    <dimen name="login_editTextHeight">64dp</dimen>
-    <dimen name="login_buttonHeight">72dp</dimen>
-    <dimen name="login_buttonText">20sp</dimen>
-    <dimen name="text_margin">16dp</dimen>
+    <dimen name="login_editTextHeight">50dp</dimen>
+    <dimen name="login_buttonHeight">52dp</dimen>
+    <dimen name="login_fieldSideMargin">16dp</dimen>
+    <dimen name="login_fieldTopMargin">8dp</dimen>
+    <dimen name="text_margin">8dp</dimen>
+    <dimen name="login_text">20sp</dimen>
+    <dimen name="login_linkText">16sp</dimen>
+    <dimen name="login_linkTopMargin">32dp</dimen>
+
+    <dimen name="createAccount_text">20sp</dimen>
 </resources>

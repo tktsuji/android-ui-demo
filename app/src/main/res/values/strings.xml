@@ -17,14 +17,19 @@
     <string name="buttonlogin">Login</string>
     <string name="buttoncreateaccount">Create Account</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="login_umail">UCSB Email</string>
+    <string name="login_password">Password</string>
+    <string name="login_link"><u>Need an account? Create one here.</u></string>
 
     <string name="createAccount_umail">UCSB Email</string>
     <string name="createAccount_password">Password</string>
     <string name="createAccount_username">Username</string>
-    <string name="createAccount_lastName">Last Name</string>
     <string name="createAccount_confirmPassword">Confirm Password</string>
-    <string name="createAccount_accountInfo">Account Information:</string>
-    <string name="createAccount_personalDetails">Personal Details:</string>
+    <string name="createAccount_level">Level:</string>
+    <string name="createAccount_ugrad">Undergraduate</string>
+    <string name="createAccount_grad">Graduate</string>
+    <string name="createAccount_proffessor">Professor</string>
+    <string name="createAccount_confirm">Confirm</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -32,6 +37,32 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="title_activity_edit_profile">EditProfileActivity</string>
+
+    <!-- TODO: ENTER THE REST OF MAJORS OFFERED AT UCSB -->
+    <string-array name="majors_array">
+        <item>Anthropology</item>
+        <item>Art</item>
+        <item>Asian American Studies</item>
+        <item>Black Studies</item>
+        <item>Chemical Engineering</item>
+        <item>Chicano Studies</item>
+        <item>Communication</item>
+        <item>Computer Engineering</item>
+        <item>Computer Science</item>
+        <item>Dance</item>
+        <item>Earth Science</item>
+        <item>Economics</item>
+        <item>English</item>
+        <item>Environmental Studies</item>
+        <item>Film and Media</item>
+        <item>Geography</item>
+        <item>Mathematics</item>
+        <item>Mechanical Engineering</item>
+        <item>Psychology</item>
+        <item>Sociology</item>
+        <item>Theater</item>
+        <item>Major</item>
+    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

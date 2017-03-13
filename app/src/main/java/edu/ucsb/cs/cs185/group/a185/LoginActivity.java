@@ -46,13 +46,24 @@ public class LoginActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.setContentView(R.layout.activity_login);
 
         final EditText umailText = (EditText) findViewById(R.id.loginUmail);
         final EditText passwordText = (EditText) findViewById(R.id.loginPassword);
 
-        Button createAccountButton = (Button) findViewById(R.id.createAccountButton);
+
+        /*Button createAccountButton = (Button) findViewById(R.id.createAccountButton);
         createAccountButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), CreateAnAccountActivity.class);
+                startActivity(intent);
+            }
+        })*/
+
+        TextView createAccountLink = (TextView) findViewById(R.id.loginLink);
+        createAccountLink.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), CreateAnAccountActivity.class);
@@ -61,7 +72,7 @@ public class LoginActivity extends Activity {
         });
 
 
-        Button loginButton = (Button) findViewById(R.id.loginButton);
+       Button loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +83,6 @@ public class LoginActivity extends Activity {
             }
         });
     }
-
 
 }
 

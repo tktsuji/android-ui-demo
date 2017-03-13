@@ -6,15 +6,15 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/ucsb"
     tools:context="edu.ucsb.cs.cs185.group.a185.LoginActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/inquery"
-        android:id="@+id/loginLogo"
-        android:layout_above="@+id/loginUmail"/>
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:src="@drawable/iq"
+        android:layout_above="@+id/loginUmail"
+        android:layout_centerHorizontal="true"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -23,10 +23,15 @@
         android:imeOptions="actionNext"
         android:inputType="text"
         android:id="@+id/loginUmail"
+        android:hint="@string/login_umail"
+        android:drawableLeft="@drawable/ic_mail_outline"
+        android:drawableStart="@drawable/ic_mail_outline"
+        android:drawablePadding="16dp"
         android:layout_centerVertical="true"
-        android:hint="UCSB Email"
-        android:drawableLeft="@drawable/ic_email_black_24dp"
-        android:drawablePadding="16dp"/>
+        android:layout_marginLeft="@dimen/login_fieldSideMargin"
+        android:layout_marginRight="@dimen/login_fieldSideMargin"
+        android:textSize="@dimen/login_text"
+        android:background="@color/colorWhite"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -35,25 +40,41 @@
         android:imeOptions="actionDone"
         android:inputType="text"
         android:id="@+id/loginPassword"
-        android:hint="Password"
-        android:drawableLeft="@drawable/ic_lock_black_24dp"
-        android:layout_below="@id/loginUmail"
-        android:drawablePadding="16dp"/>
+        android:hint="@string/login_password"
+        android:drawableLeft="@drawable/ic_lock_outline"
+        android:drawableStart="@drawable/ic_lock_outline"
+        android:drawablePadding="16dp"
+        android:layout_below="@+id/loginUmail"
+        android:layout_marginLeft="@dimen/login_fieldSideMargin"
+        android:layout_marginRight="@dimen/login_fieldSideMargin"
+        android:layout_marginTop="@dimen/login_fieldTopMargin"
+        android:textSize="@dimen/login_text"
+        android:background="@color/colorWhite"/>
 
     <Button
         android:text="@string/buttonlogin"
         android:layout_width="match_parent"
         android:layout_height="@dimen/login_buttonHeight"
         android:id="@+id/loginButton"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/login_text"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:layout_below="@id/loginPassword"
-        android:textSize="@dimen/login_buttonText"/>
+        android:layout_marginLeft="@dimen/login_fieldSideMargin"
+        android:layout_marginRight="@dimen/login_fieldSideMargin"
+        android:layout_marginTop="@dimen/login_fieldTopMargin"
+        />
 
-    <Button
-        android:text="@string/buttoncreateaccount"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/login_buttonHeight"
-        android:id="@+id/createAccountButton"
+    <TextView
+        android:id="@+id/loginLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_link"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/login_linkText"
         android:layout_below="@id/loginButton"
-        android:backgroundTint="@color/colorAccent"
-        android:textSize="@dimen/login_buttonText"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/login_linkTopMargin"
+        android:clickable="true" />
+
 </RelativeLayout>
