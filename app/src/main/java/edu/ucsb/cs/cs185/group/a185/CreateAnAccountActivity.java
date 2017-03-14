@@ -9,6 +9,7 @@ import android.support.v7.view.ContextThemeWrapper;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,21 +18,28 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import static android.view.View.GONE;
+
 public class CreateAnAccountActivity extends AppCompatActivity {
     User user = User.getInstance();
     Spinner spinner;
+    EditText nameTextField, umailTextField, passwordTextField, confirmPassTextField,
+             majorErrorText;
+    RadioGroup levelRadioGroup;
+    String major = "";
+    String level = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_an_account);
 
-        final EditText nameTextField = (EditText) findViewById(R.id.UsernameText);
-        final EditText umailTextField = (EditText) findViewById(R.id.umailText);
-        final EditText passwordTextField = (EditText) findViewById(R.id.passwordText);
-        final RadioGroup levelRadioGroup = (RadioGroup) findViewById(R.id.levelRadioGroup);
-
-        //final EditText majorTextField = (EditText) findViewById(R.id.MajorText);
+        nameTextField = (EditText) findViewById(R.id.UsernameText);
+        umailTextField = (EditText) findViewById(R.id.umailText);
+        passwordTextField = (EditText) findViewById(R.id.passwordText);
+        confirmPassTextField = (EditText) findViewById(R.id.confirmPasswordText);
+        majorErrorText = (EditText) findViewById(R.id.invisibleMajorErrorText);
+        levelRadioGroup = (RadioGroup) findViewById(R.id.levelRadioGroup);
 
         // CODE TO SHOW HINT IN SPINNER DROPDOWN MENU
         String[] majorArray = getResources().getStringArray(R.array.majors_array);
@@ -54,24 +62,77 @@ public class CreateAnAccountActivity extends AppCompatActivity {
         spinner = (Spinner) findViewById(R.id.majorSpinner);
         spinner.setAdapter(adapter);
         spinner.setSelection(adapter.getCount());
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
+                if (! (spinner.getItemAtPosition(pos).equals("Major")) ) {
+                    // ERASE ERROR MESSAGE FROM VIEW NOW THAT MAJOR IS SELECTED
+                    majorErrorText.setVisibility(GONE);
+                }
+            }
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                return;
+            }
+        });
 
         // ON CONFIRMATION OF ACCOUNT CREATION
         Button confirmButton = (Button) findViewById(R.id.confirmButton);
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // SET USER'S INFO TO USER'S INPUT
                 user.setUsername(nameTextField.getText().toString());
                 user.setUmail(umailTextField.getText().toString());
                 user.setPassword(passwordTextField.getText().toString());
-                String major = spinner.getSelectedItem().toString();
+                major = spinner.getSelectedItem().toString();
                 user.setMajor(major);
                 int selectedId = levelRadioGroup.getCheckedRadioButtonId();
-                RadioButton radioButton = (RadioButton) findViewById(selectedId);
-                user.setUserLevel(radioButton.getText().toString());
-                Intent intent = new Intent(v.getContext(), LoginActivity.class);
-                startActivity(intent);
+                if (selectedId != -1) { // IF AN ITEM WAS SELECTED
+                    RadioButton radioButton = (RadioButton) findViewById(selectedId);
+                    level = radioButton.getText().toString();
+                    user.setUserLevel(level);
+                }
+
+                // CHECK THAT USER'S INPUT IS VALID
+                if (isInfoValid()) {
+                    Intent intent = new Intent(v.getContext(), LoginActivity.class);
+                    startActivity(intent);
+                }
             }
         });
+    }
+
+    // CHECKS THAT FIELDS ARE FILLED, EMAIL HAS @UMAIL.UCSB.EDU, AND PASSWORD IS CORRECTLY CONFIRMED
+    // TODO: error message if grade level has not been selected, strings should be from resource
+    public boolean isInfoValid() {
+        boolean isAllInfoValid = true;
+        String umail = umailTextField.getText().toString().toLowerCase();
+        if (umail.length() == 0 || !umail.contains("@umail.ucsb.edu")) {
+            umailTextField.setError("Please enter your full umail address.");
+            isAllInfoValid = false;
+        }
+        String password = passwordTextField.getText().toString();
+        if (password.length() == 0) {
+            passwordTextField.setError("Please enter a password.");
+            isAllInfoValid = false;
+        }
+        String confirmPassword = confirmPassTextField.getText().toString();
+        if (!password.equals(confirmPassword)) {
+            confirmPassTextField.setError("Password does not match.");
+            isAllInfoValid = false;
+        }
+        if (nameTextField.getText().length() == 0) {
+            nameTextField.setError("Please enter a username.");
+            isAllInfoValid = false;
+        }
+        if (major.equals("Major")) {
+            majorErrorText.setError("Please select your major.");
+            isAllInfoValid = false;
+        }
+        if (level.length() == 0) {
+            isAllInfoValid = false;
+        }
+
+        return isAllInfoValid;
     }
 
     @Override
@@ -87,7 +148,7 @@ public class CreateAnAccountActivity extends AppCompatActivity {
     public void onBackPressed() {
         new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.CustomAlertDialog))
                 .setTitle("Cancel")
-                .setMessage("Are you sure you want to exit? The information you have entered will be lost.")
+                .setMessage("Are you sure you want to exit? Any information you have entered will be lost.")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener()
                 {
                     @Override
