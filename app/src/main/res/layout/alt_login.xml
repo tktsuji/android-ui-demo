@@ -1,0 +1,69 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorPrimary"
+    tools:context="edu.ucsb.cs.cs185.group.a185.LoginActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/inquery"
+        android:layout_above="@+id/loginUmail"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_editTextHeight"
+        android:maxLines="1"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:id="@+id/loginUmail"
+        android:layout_centerVertical="true"
+        android:hint="@string/login_umail"
+        android:drawableLeft="@drawable/ic_mail_outline"
+        android:drawablePadding="16dp"
+        android:layout_marginLeft="@dimen/login_fieldSideMargin"
+        android:layout_marginRight="@dimen/login_fieldSideMargin"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_editTextHeight"
+        android:maxLines="1"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:id="@+id/loginPassword"
+        android:hint="@string/login_password"
+        android:drawableLeft="@drawable/ic_lock_outline"
+        android:layout_below="@id/loginUmail"
+        android:drawablePadding="16dp"
+        android:layout_marginLeft="@dimen/login_fieldSideMargin"
+        android:layout_marginRight="@dimen/login_fieldSideMargin"/>
+
+    <Button
+        android:text="@string/buttonlogin"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_buttonHeight"
+        android:id="@+id/loginButton"
+        android:layout_below="@id/loginPassword"
+        android:textSize="@dimen/login_text"
+        android:layout_marginLeft="@dimen/login_fieldSideMargin"
+        android:layout_marginRight="@dimen/login_fieldSideMargin"/>
+
+    <Button
+        android:text="@string/buttoncreateaccount"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_buttonHeight"
+        android:id="@+id/createAccountButton"
+        android:backgroundTint="@color/colorAccent"
+        android:textSize="@dimen/login_text"
+        android:layout_below="@+id/loginButton"
+        android:layout_marginLeft="@dimen/login_fieldSideMargin"
+        android:layout_marginRight="@dimen/login_fieldSideMargin">
+    </Button>
+</RelativeLayout>

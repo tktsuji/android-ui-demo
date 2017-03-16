@@ -2,18 +2,17 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_create_an_account"
-    android:layout_marginTop="@dimen/activity_vertical_margin"
-    android:layout_marginBottom="@dimen/activity_vertical_margin"
-    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-    android:layout_marginRight="@dimen/activity_horizontal_margin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     android:fillViewport="true"
     >
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
     tools:context="edu.ucsb.cs.cs185.group.a185.CreateAnAccountActivity">
 
     <EditText
@@ -21,10 +20,16 @@
         android:maxLines="1"
         android:imeOptions="actionNext"
         android:inputType="textEmailAddress"
+        android:layout_marginTop="@dimen/login_fieldTopMargin"
+        android:layout_marginBottom="@dimen/login_fieldTopMargin"
+        android:layout_marginLeft="@dimen/login_fieldSideMargin"
+        android:layout_marginRight="@dimen/login_fieldSideMargin"
+        android:layout_height="@dimen/login_editTextHeight"
+        android:background="@color/colorWhite"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:textSize="@dimen/createAccount_text"
-        android:hint="@string/createAccount_umail"/>
+        android:hint="@string/createAccount_umail"
+        android:drawableLeft="@drawable/ic_mail_outline"/>
 
     <EditText
         android:id="@+id/passwordText"
@@ -35,18 +40,28 @@
         android:layout_height="@dimen/login_editTextHeight"
         android:hint="@string/createAccount_password"
         android:layout_marginTop="@dimen/login_fieldTopMargin"
-        android:textSize="@dimen/createAccount_text"/>
+        android:layout_marginBottom="@dimen/login_fieldTopMargin"
+        android:layout_marginLeft="@dimen/login_fieldSideMargin"
+        android:layout_marginRight="@dimen/login_fieldSideMargin"
+        android:background="@color/colorWhite"
+        android:textSize="@dimen/createAccount_text"
+        android:drawableLeft="@drawable/ic_lock_outline"/>
 
     <EditText
         android:id="@+id/confirmPasswordText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/login_editTextHeight"
         android:maxLines="1"
         android:imeOptions="actionNext"
         android:inputType="textPassword"
         android:hint="@string/createAccount_confirmPassword"
         android:layout_marginTop="@dimen/login_fieldTopMargin"
-        android:textSize="@dimen/createAccount_text" />
+        android:layout_marginBottom="@dimen/login_fieldTopMargin"
+        android:layout_marginLeft="@dimen/login_fieldSideMargin"
+        android:layout_marginRight="@dimen/login_fieldSideMargin"
+        android:background="@color/colorWhite"
+        android:textSize="@dimen/createAccount_text"
+        android:drawableLeft="@drawable/ic_lock_outline"/>
 
     <EditText
         android:id="@+id/UsernameText"
@@ -54,72 +69,81 @@
         android:imeOptions="actionDone"
         android:inputType="textPersonName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/login_editTextHeight"
         android:hint="@string/createAccount_username"
         android:layout_marginTop="@dimen/login_fieldTopMargin"
-        android:textSize="@dimen/createAccount_text"/>
+        android:layout_marginBottom="@dimen/login_fieldTopMargin"
+        android:layout_marginLeft="@dimen/login_fieldSideMargin"
+        android:layout_marginRight="@dimen/login_fieldSideMargin"
+        android:background="@color/colorWhite"
+        android:textSize="@dimen/createAccount_text"
+        android:drawableLeft="@drawable/ic_account_circle"/>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <Spinner
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/login_fieldTopMargin"
+        android:layout_marginBottom="@dimen/login_fieldTopMargin"
+        android:layout_marginLeft="@dimen/login_fieldSideMargin"
+        android:layout_marginRight="@dimen/login_fieldSideMargin">
+        <RelativeLayout
+            android:id="@+id/majorSpinnerLayout"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/majorSpinner"
-            android:layout_marginTop="@dimen/login_fieldTopMargin"
-            android:textSize="@dimen/createAccount_text"
-            style="@style/CustomSpinner"/>
+            android:layout_height="@dimen/login_editTextHeight"
 
-        <EditText
-            android:id="@+id/invisibleMajorErrorText"
+            android:background="@color/colorWhite">
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/majorSpinner"
+                android:layout_marginTop="@dimen/login_fieldTopMargin"
+                android:textSize="@dimen/createAccount_text"/>
+
+            <EditText
+                android:id="@+id/invisibleMajorErrorText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_toRightOf="@id/majorSpinner"
+                android:layout_toEndOf="@id/majorSpinner"
+                android:layout_alignBottom="@id/majorSpinner"
+                android:layout_marginLeft="4dp"
+                android:layout_marginBottom="4dp"
+                android:background="@android:color/transparent"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/levelSpinnerLayout"
+            android:layout_toRightOf="@id/majorSpinnerLayout"
+            android:layout_toEndOf="@id/majorSpinnerLayout"
+            android:layout_alignBottom="@id/majorSpinnerLayout"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:layout_toRightOf="@id/majorSpinner"
-            android:layout_toEndOf="@id/majorSpinner"
-            android:layout_alignBottom="@id/majorSpinner"
-            android:layout_marginLeft="8dp"
-            android:layout_marginBottom="4dp"
-            android:background="@android:color/transparent"/>
+            android:layout_height="@dimen/login_editTextHeight"
+            android:layout_marginLeft="@dimen/login_fieldSideMargin"
+            android:background="@color/colorWhite">
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/levelSpinner"
+                android:layout_marginTop="@dimen/login_fieldTopMargin"
+                android:textSize="@dimen/createAccount_text"/>
+
+            <EditText
+                android:id="@+id/invisibleLevelErrorText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_toRightOf="@id/levelSpinner"
+                android:layout_toEndOf="@id/levelSpinner"
+                android:layout_alignBottom="@id/levelSpinner"
+                android:layout_marginLeft="4dp"
+                android:layout_marginBottom="4dp"
+                android:background="@android:color/transparent"/>
+        </RelativeLayout>
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="2dp"
-        android:text="@string/createAccount_level"
-        android:textSize="@dimen/createAccount_text"/>
-    <RadioGroup
-        android:id="@+id/levelRadioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <RadioButton
-            android:id="@+id/undergradRadio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/createAccount_ugrad"
-            android:layout_marginTop="@dimen/login_linkTopMargin"
-            android:layout_marginLeft="@dimen/login_fieldSideMargin"
-            android:textSize="@dimen/createAccount_text"/>
-        <RadioButton
-            android:id="@+id/gradRadio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/createAccount_grad"
-            android:layout_marginTop="@dimen/login_linkTopMargin"
-            android:layout_marginLeft="@dimen/login_fieldSideMargin"
-            android:textSize="@dimen/createAccount_text"/>
-        <RadioButton
-            android:id="@+id/proffesorRadio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/createAccount_proffessor"
-            android:layout_marginTop="@dimen/login_linkTopMargin"
-            android:layout_marginLeft="@dimen/login_fieldSideMargin"
-            android:textSize="@dimen/createAccount_text"/>
-    </RadioGroup>
 
     <Button
         android:id="@+id/confirmButton"

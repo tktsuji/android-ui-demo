@@ -22,10 +22,9 @@ import static android.view.View.GONE;
 
 public class CreateAnAccountActivity extends AppCompatActivity {
     User user = User.getInstance();
-    Spinner spinner;
+    Spinner spinner, spinnerLevels;
     EditText nameTextField, umailTextField, passwordTextField, confirmPassTextField,
-             majorErrorText;
-    RadioGroup levelRadioGroup;
+             majorErrorText, levelErrorText;
     String major = "";
     String level = "";
 
@@ -39,9 +38,9 @@ public class CreateAnAccountActivity extends AppCompatActivity {
         passwordTextField = (EditText) findViewById(R.id.passwordText);
         confirmPassTextField = (EditText) findViewById(R.id.confirmPasswordText);
         majorErrorText = (EditText) findViewById(R.id.invisibleMajorErrorText);
-        levelRadioGroup = (RadioGroup) findViewById(R.id.levelRadioGroup);
+        levelErrorText = (EditText) findViewById(R.id.invisibleLevelErrorText);
 
-        // CODE TO SHOW HINT IN SPINNER DROPDOWN MENU
+        // CODE TO SHOW HINT IN SPINNER DROPDOWN MENU (MAJOR)
         String[] majorArray = getResources().getStringArray(R.array.majors_array);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, majorArray) {
             @Override
@@ -74,6 +73,40 @@ public class CreateAnAccountActivity extends AppCompatActivity {
             }
         });
 
+        // CODE TO SHOW HINT IN SPINNER DROPDOWN MENU (LEVEL)
+        String[] levelArray = getResources().getStringArray(R.array.levels_array);
+        ArrayAdapter<String> adapterLevels = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, levelArray) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View v = super.getView(position, convertView, parent);
+                if (position == getCount()) {
+                    ((TextView)v.findViewById(android.R.id.text1)).setText("");
+                    ((TextView)v.findViewById(android.R.id.text1)).setHint(getItem(getCount()));
+                }
+                ((TextView)v.findViewById(android.R.id.text1)).setTextSize(20);
+                return v;
+            }
+            @Override
+            public int getCount() {
+                return super.getCount()-1;
+            }
+        };
+        spinnerLevels = (Spinner) findViewById(R.id.levelSpinner);
+        spinnerLevels.setAdapter(adapterLevels);
+        spinnerLevels.setSelection(adapterLevels.getCount());
+        spinnerLevels.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
+                if (! (spinnerLevels.getItemAtPosition(pos).equals("Level")) ) {
+                    // ERASE ERROR MESSAGE FROM VIEW NOW THAT MAJOR IS SELECTED
+                    levelErrorText.setVisibility(GONE);
+                }
+            }
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                return;
+            }
+        });
+
+
         // ON CONFIRMATION OF ACCOUNT CREATION
         Button confirmButton = (Button) findViewById(R.id.confirmButton);
         confirmButton.setOnClickListener(new View.OnClickListener() {
@@ -85,12 +118,8 @@ public class CreateAnAccountActivity extends AppCompatActivity {
                 user.setPassword(passwordTextField.getText().toString());
                 major = spinner.getSelectedItem().toString();
                 user.setMajor(major);
-                int selectedId = levelRadioGroup.getCheckedRadioButtonId();
-                if (selectedId != -1) { // IF AN ITEM WAS SELECTED
-                    RadioButton radioButton = (RadioButton) findViewById(selectedId);
-                    level = radioButton.getText().toString();
-                    user.setUserLevel(level);
-                }
+                level = spinnerLevels.getSelectedItem().toString();
+                user.setUserLevel(level);
 
                 // CHECK THAT USER'S INPUT IS VALID
                 if (isInfoValid()) {
@@ -128,7 +157,8 @@ public class CreateAnAccountActivity extends AppCompatActivity {
             majorErrorText.setError("Please select your major.");
             isAllInfoValid = false;
         }
-        if (level.length() == 0) {
+        if (level.equals("Level")) {
+            levelErrorText.setError("Please select your level.");
             isAllInfoValid = false;
         }
 

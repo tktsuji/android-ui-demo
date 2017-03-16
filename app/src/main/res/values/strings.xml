@@ -64,6 +64,13 @@
         <item>Major</item>
     </string-array>
 
+    <string-array name="levels_array">
+        <item>Undergraduate</item>
+        <item>Graduate</item>
+        <item>Professor</item>
+        <item>Level</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

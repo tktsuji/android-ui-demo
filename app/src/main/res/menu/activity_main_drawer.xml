@@ -3,16 +3,16 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
+            android:id="@+id/ic_account_box"
+            android:icon="@drawable/ic_account_box"
             android:title="View Profile" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
+            android:id="@+id/ic_folder_shared"
+            android:icon="@drawable/ic_folder_shared"
             android:title="My Posts" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:id="@+id/ic_keyboard_return"
+            android:icon="@drawable/ic_keyboard_return"
             android:title="Logout" />
 
     </group>
