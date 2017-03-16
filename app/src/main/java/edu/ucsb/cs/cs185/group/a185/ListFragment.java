@@ -2,13 +2,16 @@ package edu.ucsb.cs.cs185.group.a185;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import edu.ucsb.cs.cs185.group.a185.dummy.DummyContent;
 import edu.ucsb.cs.cs185.group.a185.dummy.DummyContent.DummyItem;
@@ -20,7 +23,7 @@ import edu.ucsb.cs.cs185.group.a185.dummy.DummyContent.DummyItem;
  * interface.
  */
 public class ListFragment extends Fragment {
-
+    /**
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
@@ -30,7 +33,7 @@ public class ListFragment extends Fragment {
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
-     */
+     *
     public ListFragment() {
     }
 
@@ -51,13 +54,24 @@ public class ListFragment extends Fragment {
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
-    }
+    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_list_list, container, false);
+        View view = inflater.inflate(R.layout.list_view, container, false);
+        ListView listView = (ListView)view.findViewById(R.id.list_view);
+        PostAdapter postAdapter = new PostAdapter(getActivity());
+        listView.setAdapter(postAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getActivity(), "Clicked me", Toast.LENGTH_SHORT);
+            }
+        });
+        return view;
 
+        /**
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -70,9 +84,10 @@ public class ListFragment extends Fragment {
             recyclerView.setAdapter(new MyPostRecyclerViewAdapter(DummyContent.ITEMS, mListener));
         }
         return view;
+         */
     }
 
-
+/**
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -99,9 +114,10 @@ public class ListFragment extends Fragment {
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
-     */
+     *
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(DummyItem item);
     }
+    */
 }

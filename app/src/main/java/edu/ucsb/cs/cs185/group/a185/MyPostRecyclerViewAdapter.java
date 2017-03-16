@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import edu.ucsb.cs.cs185.group.a185.ListFragment.OnListFragmentInteractionListener;
+//import edu.ucsb.cs.cs185.group.a185.ListFragment.OnListFragmentInteractionListener;
 import edu.ucsb.cs.cs185.group.a185.dummy.DummyContent.DummyItem;
 
 import java.util.List;
@@ -15,8 +15,8 @@ import java.util.List;
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MyPostRecyclerViewAdapter extends RecyclerView.Adapter<MyPostRecyclerViewAdapter.ViewHolder> {
-
+public class MyPostRecyclerViewAdapter { //extends RecyclerView.Adapter<MyPostRecyclerViewAdapter.ViewHolder> {
+/**
     private final List<DummyItem> mValues;
     private final OnListFragmentInteractionListener mListener;
 
@@ -70,7 +70,7 @@ public class MyPostRecyclerViewAdapter extends RecyclerView.Adapter<MyPostRecycl
 
         @Override
         public String toString() {
-            return super.toString() + " '" + /*mContentView.getText() + */"'";
+            return super.toString() + " '" + /*mContentView.getText() + *"'";
         }
-    }
+    }*/
 }

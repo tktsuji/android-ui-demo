@@ -1,5 +1,7 @@
 package edu.ucsb.cs.cs185.group.a185;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -16,6 +18,7 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     User user = User.getInstance();
+    private PostManager postManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,14 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        postManager = PostManager.getInstance();
+
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = manager.beginTransaction();
+        ListFragment fragment = new ListFragment();
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.commit();
+        manager.executePendingTransactions();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -60,7 +71,9 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.mainAddPost) {
-            return true;
+            Post p = new Post();
+            p.setTitle("THIS IS THE FIRST POST");
+            postManager.addPost(p);
         }
 
         return super.onOptionsItemSelected(item);
