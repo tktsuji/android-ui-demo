@@ -68,12 +68,6 @@ public class PostAdapter extends BaseAdapter implements PostManager.OnUpdateList
             cardView.addView(t);
         }
 
-        for(int i=0;i <p.getTagCount();i++){
-            TextView c = new TextView(context);
-            c.setText(p.getComment(i));
-            cardView.addView(c);
-        }
-
         return cardView;
     }
 }

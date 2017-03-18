@@ -11,8 +11,8 @@ public class Post {
     private ArrayList<String> tags, comments;
 
     public Post(){
-        title = null;
-        text = null;
+        title = "";
+        text = "";
         tags = new ArrayList<String>();
         comments = new ArrayList<String>();
     }
