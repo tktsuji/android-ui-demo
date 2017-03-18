@@ -2,7 +2,10 @@ package edu.ucsb.cs.cs185.group.a185;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,19 +14,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
+import static edu.ucsb.cs.cs185.group.a185.Utility.getSmallBitmap;
 
 public class ProfileActivity extends AppCompatActivity {
     User user = User.getInstance();
+    ImageView avatar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         TextView profileUsername = (TextView) findViewById(R.id.profileUsername);
         if (user.getUsername() != null)
@@ -37,8 +39,8 @@ public class ProfileActivity extends AppCompatActivity {
         TextView profileTags = (TextView) findViewById(R.id.profileTags);
         if (user.getTags() != null)
             profileTags.setText(user.getTags().toString());
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        avatar = (ImageView) findViewById(R.id.avatar);
+        avatar.setImageBitmap(getSmallBitmap(this, user));
     }
 
     @Override

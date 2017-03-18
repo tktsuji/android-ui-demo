@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#18335d</color>
     <color name="colorAccent">#ffce34</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="colorLightGray">#F1F1F1</color>
+    <color name="colorOutlineField">#000000</color>
 
 
 </resources>

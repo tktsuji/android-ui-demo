@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorLightGray">
-
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -15,12 +14,13 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:fillViewport="true">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:background="@color/colorLightGray"
         tools:context="edu.ucsb.cs.cs185.group.a185.CreateAnAccountActivity">
+
         <EditText
             android:id="@+id/umailText"
             android:layout_height="@dimen/login_editTextHeight"
@@ -32,11 +32,11 @@
             android:maxLines="1"
             android:imeOptions="actionNext"
             android:inputType="textEmailAddress"
-            android:background="@drawable/shadow"
             android:textSize="@dimen/createAccount_text"
             android:hint="@string/createAccount_umail"
             android:drawableLeft="@drawable/ic_mail_outline"
-            android:drawablePadding="16dp"/>
+            android:drawablePadding="16dp"
+            android:background="@drawable/shadow"/>
 
         <EditText
             android:id="@+id/passwordText"
@@ -89,22 +89,24 @@
             android:drawableLeft="@drawable/ic_account_circle"
             android:drawablePadding="16dp"/>
 
-
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/login_fieldTopMargin"
+            android:layout_marginBottom="@dimen/login_fieldTopMargin"
+            android:layout_marginLeft="@dimen/login_fieldSideMargin"
+            android:layout_marginRight="@dimen/login_fieldSideMargin">
             <RelativeLayout
                 android:id="@+id/majorSpinnerLayout"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/login_editTextHeight"
-                android:layout_marginTop="@dimen/login_fieldTopMargin"
-                android:layout_marginBottom="@dimen/login_fieldTopMargin"
-                android:layout_marginLeft="@dimen/login_fieldSideMargin"
-                android:layout_marginRight="@dimen/login_fieldSideMargin"
+
                 android:background="@drawable/shadow">
                 <Spinner
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:id="@+id/majorSpinner"
-                    android:layout_marginRight="36dp"
                     android:textSize="@dimen/createAccount_text"/>
 
                 <EditText
@@ -113,8 +115,8 @@
                     android:layout_height="wrap_content"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
+                    android:layout_toRightOf="@id/majorSpinner"
+                    android:layout_toEndOf="@id/majorSpinner"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="4dp"
                     android:background="@android:color/transparent"/>
@@ -122,19 +124,18 @@
 
             <RelativeLayout
                 android:id="@+id/levelSpinnerLayout"
-                android:layout_width="match_parent"
+                android:layout_toRightOf="@id/majorSpinnerLayout"
+                android:layout_toEndOf="@id/majorSpinnerLayout"
+                android:layout_alignBottom="@id/majorSpinnerLayout"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/login_editTextHeight"
-                android:layout_marginTop="@dimen/login_fieldTopMargin"
-                android:layout_marginBottom="@dimen/login_fieldTopMargin"
                 android:layout_marginLeft="@dimen/login_fieldSideMargin"
-                android:layout_marginRight="@dimen/login_fieldSideMargin"
                 android:background="@drawable/shadow">
                 <Spinner
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:id="@+id/levelSpinner"
-                    android:layout_marginRight="36dp"
                     android:layout_marginTop="@dimen/login_fieldTopMargin"
                     android:textSize="@dimen/createAccount_text"/>
 
@@ -144,13 +145,13 @@
                     android:layout_height="wrap_content"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
+                    android:layout_toRightOf="@id/levelSpinner"
+                    android:layout_toEndOf="@id/levelSpinner"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="4dp"
                     android:background="@android:color/transparent"/>
             </RelativeLayout>
-
+        </RelativeLayout>
 
 
         <Button
@@ -163,6 +164,8 @@
             android:layout_marginRight="12dp"
             android:backgroundTint="@color/colorAccent"
             android:textSize="@dimen/createAccount_text"/>
+
     </LinearLayout>
+
     </ScrollView>
 </LinearLayout>

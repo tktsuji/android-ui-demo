@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorLightGray"
     android:fitsSystemWindows="true"
     tools:context="edu.ucsb.cs.cs185.group.a185.ProfileActivity">
 
@@ -11,45 +12,129 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"></android.support.design.widget.AppBarLayout>
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="116dp"
+        android:layout_height="116dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@color/colorOutlineField"
+        android:padding="2dp"
+        android:src="@drawable/avatar"
+        android:scaleType="centerCrop"
+        android:cropToPadding="true"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/avatar"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/login_fieldTopMargin"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/login_fieldTopMargin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            app:cardElevation="4dp">
 
-    </android.support.design.widget.AppBarLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/login_fieldTopMargin"
+                android:layout_marginLeft="@dimen/login_fieldSideMargin"
+                android:layout_marginRight="@dimen/login_fieldSideMargin"
+                android:layout_marginTop="@dimen/login_fieldTopMargin"
+                android:orientation="vertical">
 
-    <include layout="@layout/content_profile" />
+                <TextView
+                    android:id="@+id/profileUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/createAccount_text" />
 
-    <TextView
-        android:id="@+id/profileUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Username" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
 
-    <TextView
-        android:id="@+id/profileMajor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/profileUsername"/>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/login_fieldTopMargin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            app:cardElevation="4dp">
 
-    <TextView
-        android:id="@+id/profileUserLevel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/profileMajor"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/login_fieldSideMargin"
+                android:layout_marginRight="@dimen/login_fieldSideMargin"
+                android:layout_marginTop="@dimen/login_fieldTopMargin"
+                android:layout_marginBottom="@dimen/login_fieldTopMargin"
+                android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/profileTags"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/profileUserLevel"/>
+                <TextView
+                    android:id="@+id/profileMajor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/createAccount_text" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Major" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/login_fieldTopMargin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/login_fieldTopMargin"
+                android:layout_marginLeft="@dimen/login_fieldSideMargin"
+                android:layout_marginRight="@dimen/login_fieldSideMargin"
+                android:layout_marginTop="@dimen/login_fieldTopMargin"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/profileUserLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/createAccount_text" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Level" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/profileTags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
 
 </RelativeLayout>

@@ -1,16 +1,17 @@
 package edu.ucsb.cs.cs185.group.a185;
 
+import android.net.Uri;
+
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by tricia on 3/9/17.
- */
-
 public class User {
     private static String umail, password, major, username, userLevel;
+    private static Uri avatar;
     private static List<String> tags;
     private static User instance = null;
+    private static final String DEFAULT_PHOTO ="android.resource://edu.ucsb.cs.cs185.group.a185/drawable/avatar";
 
     public User() {
         umail = null;
@@ -19,6 +20,7 @@ public class User {
         username = null;
         userLevel = null;
         tags = new ArrayList<String>();
+        avatar = Uri.parse(DEFAULT_PHOTO);
     }
 
     public static User getInstance() {
@@ -66,6 +68,18 @@ public class User {
 
     public static String getUserLevel() {
         return userLevel;
+    }
+
+    public static void setAvatar(Uri imageUri) {
+        avatar = imageUri;
+    }
+
+    public static Uri getAvatar() {
+        return avatar;
+    }
+
+    public static String getDefaultPhoto() {
+        return DEFAULT_PHOTO;
     }
 
     public static List<String> getTags()  {

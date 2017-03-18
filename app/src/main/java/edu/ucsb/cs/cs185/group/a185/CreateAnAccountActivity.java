@@ -13,8 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -131,7 +129,7 @@ public class CreateAnAccountActivity extends AppCompatActivity {
     }
 
     // CHECKS THAT FIELDS ARE FILLED, EMAIL HAS @UMAIL.UCSB.EDU, AND PASSWORD IS CORRECTLY CONFIRMED
-    // TODO: error message if grade level has not been selected, strings should be from resource
+    // TODO: strings should be from resource
     public boolean isInfoValid() {
         boolean isAllInfoValid = true;
         String umail = umailTextField.getText().toString().toLowerCase();

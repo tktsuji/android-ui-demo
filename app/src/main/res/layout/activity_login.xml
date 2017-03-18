@@ -60,10 +60,9 @@
         android:textSize="@dimen/login_text"
         android:backgroundTint="@color/colorPrimaryDark"
         android:layout_below="@id/loginPassword"
-        android:layout_marginLeft="@dimen/login_fieldSideMargin"
-        android:layout_marginRight="@dimen/login_fieldSideMargin"
-        android:layout_marginTop="@dimen/login_fieldTopMargin"
-        />
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="@dimen/login_fieldTopMargin" />
 
     <TextView
         android:id="@+id/loginLink"

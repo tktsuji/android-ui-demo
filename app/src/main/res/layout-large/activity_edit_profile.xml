@@ -59,7 +59,6 @@
                     android:textColor="@color/colorWhite"
                     android:id="@+id/deletePicButton" />
             </RelativeLayout>
-
             <EditText
                 android:id="@+id/UsernameText"
                 android:maxLines="1"
@@ -75,20 +74,22 @@
                 android:background="@drawable/shadow"
                 android:textSize="@dimen/createAccount_text"
                 android:drawableLeft="@drawable/ic_account_circle"
-                android:drawablePadding="16dp" />
+                android:drawablePadding="16dp"/>
 
-
+            <RelativeLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/login_fieldTopMargin"
+                android:layout_marginBottom="@dimen/login_fieldTopMargin"
+                android:layout_marginLeft="@dimen/login_fieldSideMargin"
+                android:layout_marginRight="@dimen/login_fieldSideMargin">
                 <RelativeLayout
                     android:id="@+id/majorSpinnerLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/login_editTextHeight"
-                    android:layout_marginTop="@dimen/login_fieldTopMargin"
-                    android:layout_marginBottom="@dimen/login_fieldTopMargin"
-                    android:layout_marginLeft="@dimen/login_fieldSideMargin"
-                    android:layout_marginRight="@dimen/login_fieldSideMargin"
                     android:background="@drawable/shadow">
                     <Spinner
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/majorSpinner"
                         android:layout_centerVertical="true"
@@ -97,20 +98,21 @@
 
                 <RelativeLayout
                     android:id="@+id/levelSpinnerLayout"
+                    android:layout_toRightOf="@id/majorSpinnerLayout"
+                    android:layout_toEndOf="@id/majorSpinnerLayout"
+                    android:layout_alignBottom="@id/majorSpinnerLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/login_editTextHeight"
-                    android:layout_marginTop="@dimen/login_fieldTopMargin"
-                    android:layout_marginBottom="@dimen/login_fieldTopMargin"
                     android:layout_marginLeft="@dimen/login_fieldSideMargin"
-                    android:layout_marginRight="@dimen/login_fieldSideMargin"
                     android:background="@drawable/shadow">
                     <Spinner
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/levelSpinner"
                         android:layout_centerVertical="true"
                         android:textSize="@dimen/createAccount_text"/>
                 </RelativeLayout>
+            </RelativeLayout>
 
 
             <Button

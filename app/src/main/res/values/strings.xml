@@ -31,12 +31,16 @@
     <string name="createAccount_proffessor">Professor</string>
     <string name="createAccount_confirm">Confirm</string>
 
+    <string name="editProfile_changePhoto">Change Photo</string>
+    <string name="editProfile_deletePhoto">Delete Photo</string>
+    <string name="editProfile_save">Save Changes</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="title_activity_profile">ProfileActivity</string>
-    <string name="title_activity_edit_profile">EditProfileActivity</string>
+    <string name="title_activity_profile">Profile</string>
+    <string name="title_activity_edit_profile">Edit Profile</string>
 
     <!-- TODO: ENTER THE REST OF MAJORS OFFERED AT UCSB -->
     <string-array name="majors_array">
@@ -61,6 +65,7 @@
         <item>Psychology</item>
         <item>Sociology</item>
         <item>Theater</item>
+        <item>Undeclared</item>
         <item>Major</item>
     </string-array>
 
