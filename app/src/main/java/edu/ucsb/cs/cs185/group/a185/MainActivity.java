@@ -17,7 +17,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    User user = User.getInstance();
+    static User user = User.getInstance();
     private PostManager postManager;
 
     @Override
@@ -71,12 +71,16 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.mainAddPost) {
-            Post p = new Post();
-            p.setTitle("THIS IS THE FIRST POST");
-            postManager.addPost(p);
+            showPostDialog();
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void showPostDialog(){
+        FragmentManager fm = getFragmentManager();
+        PostDialogFragment createPost = PostDialogFragment.newInstance();
+        createPost.show(fm, "dialog");
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -89,6 +93,12 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
         } else if (id == R.id.ic_folder_shared) {
+            FragmentManager manager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = manager.beginTransaction();
+            FilteredListFragment fragment = new FilteredListFragment();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
+            manager.executePendingTransactions();
 
         } else if (id == R.id.ic_keyboard_return) {
             Intent intent = new Intent(this, LoginActivity.class);

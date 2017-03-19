@@ -41,7 +41,7 @@ import static android.Manifest.permission.READ_CONTACTS;
  * A login screen that offers login via email/password.
  */
 public class LoginActivity extends Activity {
-    User user = User.getInstance();
+    static User user = User.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
