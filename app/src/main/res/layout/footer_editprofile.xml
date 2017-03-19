@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="edu.ucsb.cs.cs185.group.a185.EditProfileActivity"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTags"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/login_editTextHeight"
+            android:layout_marginTop="@dimen/login_fieldTopMargin"
+            android:layout_marginBottom="@dimen/login_fieldTopMargin"
+            android:layout_marginLeft="@dimen/login_fieldSideMargin"
+            android:layout_toLeftOf="@+id/addTagButton"
+            android:textSize="@dimen/login_text"
+            android:selectAllOnFocus="true"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:inputType="text"
+            android:background="@drawable/shadow"
+            android:hint="Add interest..."
+            android:paddingLeft="6dp"/>
+        <ImageView
+            android:id="@+id/addTagButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/ic_add_circle"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+
+    <Button
+    android:id="@+id/confirmButton"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/login_buttonHeight"
+    android:text="@string/editProfile_save"
+    android:layout_marginTop="@dimen/login_fieldTopMargin"
+    android:backgroundTint="@color/colorAccent"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="12dp"
+    android:textSize="@dimen/createAccount_text" />
+
+</LinearLayout>

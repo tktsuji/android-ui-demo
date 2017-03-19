@@ -121,8 +121,19 @@ public class CreateAnAccountActivity extends AppCompatActivity {
 
                 // CHECK THAT USER'S INPUT IS VALID
                 if (isInfoValid()) {
-                    Intent intent = new Intent(v.getContext(), LoginActivity.class);
-                    startActivity(intent);
+                    new AlertDialog.Builder(new ContextThemeWrapper(v.getContext(), R.style.CustomAlertDialog))
+                            .setTitle("Success")
+                            .setMessage("Your account has been created!")
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener()
+                            {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent intent = new Intent(CreateAnAccountActivity.this, LoginActivity.class);
+                                    startActivity(intent);
+                                }
+                            })
+                            .show();
+
                 }
             }
         });

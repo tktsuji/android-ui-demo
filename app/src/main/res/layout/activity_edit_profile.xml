@@ -1,130 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_create_an_account"
+    android:id="@+id/activity_edit_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
     android:background="@color/colorLightGray">
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+
+    <ListView
+        android:id="@+id/tags_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:background="@color/colorLightGray"
-        android:fillViewport="true">
+        android:layout_height="wrap_content"
+        android:divider="@android:color/transparent">
+    </ListView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:context="edu.ucsb.cs.cs185.group.a185.CreateAnAccountActivity">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/avatar"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:layout_marginLeft="@dimen/login_fieldSideMargin"
-                    android:background="@color/colorOutlineField"
-                    android:padding="2dp"
-                    android:src="@drawable/avatar"
-                    android:scaleType="centerCrop"
-                    android:cropToPadding="true"/>
-
-                <Button
-                    android:text="@string/editProfile_changePhoto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/avatar"
-                    android:layout_alignTop="@id/avatar"
-                    android:layout_marginLeft="@dimen/login_fieldSideMargin"
-                    android:layout_marginRight="@dimen/login_fieldSideMargin"
-                    android:textColor="@color/colorWhite"
-                    android:id="@+id/changePicButton" />
-
-                <Button
-                    android:text="@string/editProfile_deletePhoto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/avatar"
-                    android:layout_alignBottom="@id/avatar"
-                    android:layout_marginLeft="@dimen/login_fieldSideMargin"
-                    android:layout_marginRight="@dimen/login_fieldSideMargin"
-                    android:textColor="@color/colorWhite"
-                    android:id="@+id/deletePicButton" />
-            </RelativeLayout>
-
-            <EditText
-                android:id="@+id/UsernameText"
-                android:maxLines="1"
-                android:imeOptions="actionDone"
-                android:inputType="textPersonName"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/login_editTextHeight"
-                android:hint="@string/createAccount_username"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="@dimen/login_fieldTopMargin"
-                android:layout_marginLeft="@dimen/login_fieldSideMargin"
-                android:layout_marginRight="@dimen/login_fieldSideMargin"
-                android:background="@drawable/shadow"
-                android:textSize="@dimen/createAccount_text"
-                android:drawableLeft="@drawable/ic_account_circle"
-                android:drawablePadding="16dp" />
-
-
-                <RelativeLayout
-                    android:id="@+id/majorSpinnerLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/login_editTextHeight"
-                    android:layout_marginTop="@dimen/login_fieldTopMargin"
-                    android:layout_marginBottom="@dimen/login_fieldTopMargin"
-                    android:layout_marginLeft="@dimen/login_fieldSideMargin"
-                    android:layout_marginRight="@dimen/login_fieldSideMargin"
-                    android:background="@drawable/shadow">
-                    <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/majorSpinner"
-                        android:layout_centerVertical="true"
-                        android:textSize="@dimen/createAccount_text"/>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/levelSpinnerLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/login_editTextHeight"
-                    android:layout_marginTop="@dimen/login_fieldTopMargin"
-                    android:layout_marginBottom="@dimen/login_fieldTopMargin"
-                    android:layout_marginLeft="@dimen/login_fieldSideMargin"
-                    android:layout_marginRight="@dimen/login_fieldSideMargin"
-                    android:background="@drawable/shadow">
-                    <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/levelSpinner"
-                        android:layout_centerVertical="true"
-                        android:textSize="@dimen/createAccount_text"/>
-                </RelativeLayout>
-
-
-            <Button
-                android:id="@+id/confirmButton"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/login_buttonHeight"
-                android:text="@string/editProfile_save"
-                android:layout_marginTop="24dp"
-                android:backgroundTint="@color/colorAccent"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="12dp"
-                android:textSize="@dimen/createAccount_text"/>
-
-        </LinearLayout>
-
-    </ScrollView>
 </LinearLayout>

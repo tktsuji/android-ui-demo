@@ -16,5 +16,10 @@
     <dimen name="login_linkText">16sp</dimen>
     <dimen name="login_linkTopMargin">32dp</dimen>
 
+    <dimen name="tag_marginLeft">2dp</dimen>
+    <dimen name="tag_marginTop">4dp</dimen>
+    <dimen name="tag_padding">4dp</dimen>
+    <dimen name="tag_paddingRight">32dp</dimen>
+
     <dimen name="createAccount_text">20sp</dimen>
 </resources>

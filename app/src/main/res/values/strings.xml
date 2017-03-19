@@ -76,6 +76,33 @@
         <item>Level</item>
     </string-array>
 
+    <string-array name="userTags">
+        <item>Java</item>
+        <item>C++</item>
+        <item>Python</item>
+        <item>Machine Learning</item>
+        <item>Deep Learning</item>
+        <item>Neural Networks</item>
+        <item>Computer Security</item>
+        <item>Computer Vision</item>
+        <item>Cryptography</item>
+        <item>Networking</item>
+        <item>Robotics</item>
+        <item>Field Programmable Gate Array</item>
+        <item>Algorithms</item>
+        <item>Data Structures</item>
+        <item>Operating Systems</item>
+        <item>Programming Languages</item>
+        <item>Human-Computer Interaction</item>
+        <item>Android Development</item>
+        <item>iOS Development</item>
+        <item>Web Development</item>
+        <item>Natural Language Proc</item>
+        <item>Assembly</item>
+        <item>Databases</item>
+        <item>Graphics</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -41,6 +41,14 @@ public class ProfileActivity extends AppCompatActivity {
             profileTags.setText(user.getTags().toString());
         avatar = (ImageView) findViewById(R.id.avatar);
         avatar.setImageBitmap(getSmallBitmap(this, user));
+
+        // TEST
+        if (user.getTags().size() != 0) {
+            profileTags.setText(profileTags.getText().toString());
+        }
+        else {
+            profileTags.setText("");
+        }
     }
 
     @Override

@@ -1,19 +1,27 @@
 package edu.ucsb.cs.cs185.group.a185;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ContextThemeWrapper;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import java.util.ArrayList;
@@ -24,11 +32,17 @@ import static edu.ucsb.cs.cs185.group.a185.Utility.getSmallBitmap;
 public class EditProfileActivity extends AppCompatActivity {
     User user = User.getInstance();
     Spinner spinner, spinnerLevels;
-    EditText nameTextField, majorErrorText, levelErrorText;
+    EditText nameTextField;
+    AutoCompleteTextView tagField;
     Button confirmButton, changePicButton, deletePicButton;
-    ImageView avatar;
+    ImageView avatar, addTagButton;
     Uri currAvatar;
+    ArrayList<String> newUserTags;
 
+    TextView tv;
+    ImageView deleteTagButton;
+
+    private static int TAG_ID = 1;
     private static final int PICK_IMAGE_REQUEST = 9876;
 
     @Override
@@ -36,18 +50,19 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        nameTextField = (EditText) findViewById(R.id.UsernameText);
-        majorErrorText = (EditText) findViewById(R.id.invisibleMajorErrorText);
-        levelErrorText = (EditText) findViewById(R.id.invisibleLevelErrorText);
-        spinner = (Spinner) findViewById(R.id.majorSpinner);
-        spinnerLevels = (Spinner) findViewById(R.id.levelSpinner);
-        confirmButton = (Button) findViewById(R.id.confirmButton);
+        // SET UP TAG LIST VIEW
+        ListView tagsListView = (ListView) findViewById(R.id.tags_list);
+
+        // SET UP HEADER LAYOUT
+        View header = getLayoutInflater().inflate(R.layout.header_editprofile, tagsListView, false);
+        tagsListView.addHeaderView(header, null, false);
+        currAvatar = user.getAvatar();
+        avatar = (ImageView) findViewById(R.id.avatar);
         changePicButton = (Button) findViewById(R.id.changePicButton);
         deletePicButton = (Button) findViewById(R.id.deletePicButton);
-        avatar = (ImageView) findViewById(R.id.avatar);
-        currAvatar = user.getAvatar();
+        nameTextField = (EditText) findViewById(R.id.UsernameText);
 
-        // SET UP MAJORS SPINNER
+        spinner = (Spinner) findViewById(R.id.majorSpinner);
         ArrayList<String> majorArray = new ArrayList<>();
         majorArray.addAll(Arrays.asList(getResources().getStringArray(R.array.majors_array)));
         majorArray.remove(majorArray.size()-1);
@@ -61,7 +76,7 @@ public class EditProfileActivity extends AppCompatActivity {
         };
         spinner.setAdapter(adapter);
 
-        // SET UP LEVELS SPINNER
+        spinnerLevels = (Spinner) findViewById(R.id.levelSpinner);
         ArrayList<String> levelsArray = new ArrayList<>();
         levelsArray.addAll(Arrays.asList(getResources().getStringArray(R.array.levels_array)));
         levelsArray.remove(levelsArray.size()-1);
@@ -74,6 +89,25 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         };
         spinnerLevels.setAdapter(levelsAdapter);
+
+        // SET UP ADAPTER
+        newUserTags = new ArrayList<String>(user.getTags());
+        final TagAdapter tagsListAdapter = new TagAdapter(this, R.layout.tag_item, newUserTags);
+        tagsListView.setAdapter(tagsListAdapter);
+
+        // SET UP FOOTER
+        View footer = getLayoutInflater().inflate(R.layout.footer_editprofile, tagsListView, false);
+        tagsListView.addFooterView(footer);
+        tagField = (AutoCompleteTextView) findViewById(R.id.autoCompleteTags);
+        addTagButton = (ImageView) findViewById(R.id.addTagButton);
+        confirmButton = (Button) findViewById(R.id.confirmButton);
+
+        // SET UP AUTOCOMPLETE TAG VIEW
+        String[] userTags = getResources().getStringArray(R.array.userTags);
+        ArrayAdapter<String> adapterTags = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, userTags);
+        tagField.setAdapter(adapterTags);
+
 
         // SET FIELDS TO CURRENT USER'S INFO
         nameTextField.setText(user.getUsername());
@@ -107,14 +141,26 @@ public class EditProfileActivity extends AppCompatActivity {
                 user.setUsername(nameTextField.getText().toString());
                 user.setMajor(spinner.getSelectedItem().toString());
                 user.setUserLevel(spinnerLevels.getSelectedItem().toString());
-                //user.addTag(editProfileTags.getText().toString());
                 if (user.getUsername().equals("")) {
                     nameTextField.setError("Username cannot be blank.");
                 }
                 else {
+                    user.setTags(newUserTags);
                     Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
                     startActivity(intent);
                 }
+            }
+        });
+
+        // HANDLE ADD TAG BUTTON
+        addTagButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("CLICKED");
+                System.out.println("TAG FIELD TEXT: " + tagField.getText().toString());
+                newUserTags.add(tagField.getText().toString());
+                tagsListAdapter.notifyDataSetChanged();
+                tagField.setText("");
             }
         });
     }

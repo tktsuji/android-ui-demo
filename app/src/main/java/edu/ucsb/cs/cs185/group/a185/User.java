@@ -86,6 +86,10 @@ public class User {
         return tags;
     }
 
+    public static void setTags(ArrayList<String> updatedTags) {
+        tags = new ArrayList<String>(updatedTags);
+    }
+
     public static void addTag(String tag) {
         tags.add(tag);
     }
