@@ -1,5 +1,6 @@
 package edu.ucsb.cs.cs185.group.a185;
 
+import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.EditText;
  */
 
 public class PostDialogFragment extends DialogFragment {
+    static User user = User.getInstance();
     Post post;
     EditText titleEditor, contentEditor, tagEditor;
     Button editButton;
@@ -24,6 +26,17 @@ public class PostDialogFragment extends DialogFragment {
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+
+    }
+
+    public void onStart(){
+        super.onStart();
+        Dialog dialog = getDialog();
+        if(dialog != null){
+            int width = ViewGroup.LayoutParams.MATCH_PARENT;
+            int height = ViewGroup.LayoutParams.MATCH_PARENT;
+            dialog.getWindow().setLayout(width, height);
+        }
     }
 
     public void setPost(Post post){
@@ -32,7 +45,7 @@ public class PostDialogFragment extends DialogFragment {
 
     public static PostDialogFragment newInstance(){
         PostDialogFragment postDialogFragment = new PostDialogFragment();
-        postDialogFragment.setPost(new Post());
+        postDialogFragment.setPost(new Post(user.getUsername()));
         return postDialogFragment;
     }
 
@@ -42,7 +55,7 @@ public class PostDialogFragment extends DialogFragment {
         return postDialogFragment;
     }
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.post_editor, container);
         titleEditor = (EditText)view.findViewById(R.id.edit_title);
         contentEditor = (EditText)view.findViewById(R.id.edit_content);
@@ -56,6 +69,7 @@ public class PostDialogFragment extends DialogFragment {
                 post.setText(contentEditor.getText().toString());
                 post.addTag(tagEditor.getText().toString());
                 postManager.addPost(post);
+                dismiss();
             }
         });
 

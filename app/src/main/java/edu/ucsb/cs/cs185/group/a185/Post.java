@@ -1,5 +1,6 @@
 package edu.ucsb.cs.cs185.group.a185;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -7,14 +8,31 @@ import java.util.ArrayList;
  */
 
 public class Post {
-    private String title, text;
+    private String title, text, user;
     private ArrayList<String> tags, comments;
 
-    public Post(){
+    public Post(String username){
         title = "";
         text = "";
+        user = username;
         tags = new ArrayList<String>();
         comments = new ArrayList<String>();
+    }
+
+    public Post(String title, String text, String user, ArrayList<String> tags, ArrayList<String> comments) {
+        this.title = title;
+        this.text = text;
+        this.user = user;
+        this.tags = tags;
+        this.comments = comments;
+    }
+
+    public void setUser(String user){
+        this.user = user;
+    }
+
+    public String getUser(){
+        return this.user;
     }
 
     public void setTitle(String title){
@@ -39,6 +57,15 @@ public class Post {
 
     public String getTag(int index){
         return tags.get(index);
+    }
+
+    public boolean hasTag(String tag){
+        for(int i=0; i<tags.size();i++){
+            if(tags.get(i).equals(tag)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public int getTagCount(){

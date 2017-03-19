@@ -12,31 +12,54 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by calvinwan on 3/16/17.
+ * Created by wells on 3/18/17.
  */
 
-public class PostAdapter extends BaseAdapter implements PostManager.OnUpdateListener {
-    private Context context;
-    private PostManager postManager = PostManager.getInstance();
-    private User user = User.getInstance();
+public class FilteredPostAdapter extends BaseAdapter{
+    final int FILTER_BY_TAG = 1;
+    final int FILTER_BY_USERNAME = 2;
+    ArrayList<Post> filtered_list;
+    Context context;
+    PostManager postManager = PostManager.getInstance();
 
-    public PostAdapter(Context context){
+    public FilteredPostAdapter(Context context, String filter, int filterType){
         this.context = context;
-        postManager.setPostListener(this);
+        filtered_list = postManager.getPostArray();
+        if(filterType == FILTER_BY_TAG){
+            filterByTag(filter);
+        }
+        else if(filterType==FILTER_BY_USERNAME) {
+            filterByUsername(filter);
+        }
+
     }
 
-    public void onUpdate(){
-        notifyDataSetChanged();
+    public void filterByTag(String tag){
+        for(int i =0; i<postManager.getCount();i++){
+            if( !filtered_list.get(i).hasTag(tag)){
+                filtered_list.remove(i);
+                i--;
+            }
+        }
+    }
+
+    public void filterByUsername(String username){
+        for(int i=0; i<postManager.getCount();i++){
+            if(!filtered_list.get(i).getUser().equals(username)){
+                filtered_list.remove(i);
+                i--;
+            }
+        }
     }
 
     @Override
     public int getCount() {
-        return postManager.getCount();
+        return filtered_list.size();
     }
 
     @Override
     public Post getItem(int position) {
-        return postManager.getPost(position);
+        return filtered_list.get(position);
     }
 
     @Override
@@ -46,7 +69,7 @@ public class PostAdapter extends BaseAdapter implements PostManager.OnUpdateList
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Post p = postManager.getPost(position);
+        Post p = filtered_list.get(position);
         CardView cardView = new CardView(context);
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -64,18 +87,20 @@ public class PostAdapter extends BaseAdapter implements PostManager.OnUpdateList
         title.setTextSize(16);
 
         TextView username = new TextView(context);
-        username.setText("Posted by: " + user.getUsername());
+        username.setText("Posted by: " + filtered_list.get(position).getUser());
+
+
+        for(int i=0;i <p.getTagCount();i++) {
+            TextView t = new TextView(context);
+            t.setText(p.getTag(i));
+            linearLayout.addView(t);
+        }
 
         TextView content = new TextView(context);
         content.setText(p.getText());
         content.setMaxLines(2);
 
         linearLayout.addView(title);
-        for(int i=0;i <p.getTagCount();i++) {
-            TextView t = new TextView(context);
-            t.setText(p.getTag(i));
-            linearLayout.addView(t);
-        }
         linearLayout.addView(content);
 
         cardView.addView(linearLayout);
@@ -85,4 +110,5 @@ public class PostAdapter extends BaseAdapter implements PostManager.OnUpdateList
 
         return cardView;
     }
+
 }
