@@ -8,5 +8,6 @@
     <color name="colorOutlineField">#000000</color>
     <color name="colorTag">#d3d3d3</color>
     <color name="colorLink">#3366BB</color>
+    <color name="colorUsernameColor">#00BFFF</color>
 
 </resources>

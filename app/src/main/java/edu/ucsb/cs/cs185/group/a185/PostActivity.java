@@ -1,6 +1,7 @@
 package edu.ucsb.cs.cs185.group.a185;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -57,18 +58,26 @@ public class PostActivity extends AppCompatActivity {
         TextView content = (TextView) findViewById(R.id.big_post_content);
         TextView tags = (TextView) findViewById(R.id.big_post_tags);
 
+        title.setTextColor(getResources().getColor(R.color.colorLink));
+        tags.setTextColor(getResources().getColor(R.color.colorLink));
+        tags.setTypeface(null, Typeface.ITALIC);
+
         title.setText(postItem.getTitle());
-        username.setText(postItem.getUser());
+        username.setText("Posted by: " + postItem.getUser());
         content.setText(postItem.getText());
         String tags_list = "";
         for (int i = 0; i < postItem.getTagCount(); i ++) {
-            tags_list = tags_list + postItem.getTag(i) + ", ";
+            tags_list = tags_list + postItem.getTag(i) + "   ";
         }
         tags.setText(tags_list);
 
         // SET UP ADAPTER
         CommentAdapter adapter = new CommentAdapter(this, position);
         commentList.setAdapter(adapter);
+
+        // SET UP FOOTER
+        View footer = getLayoutInflater().inflate(R.layout.footer_postactivity, commentList, false);
+        commentList.addFooterView(footer);
 
         final EditText editComment = (EditText)findViewById(R.id.edit_comment_field);
         Button editCommentButton = (Button)findViewById(R.id.edit_comment_button);
