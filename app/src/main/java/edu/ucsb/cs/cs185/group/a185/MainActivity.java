@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -35,8 +36,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentTransaction fragmentTransaction = manager.beginTransaction();
         ListFragment fragment = new ListFragment();
         fragmentTransaction.replace(R.id.fragment_container, fragment);
-        fragmentTransaction.commit();
-        manager.executePendingTransactions();
+
+
+        if(user.getMajor()!=null){
+            FilteredListFragment fragment2 = new FilteredListFragment();
+            Bundle bundle = new Bundle(2);
+            Log.d("main","main");
+            bundle.putInt("filterType", 3);
+            bundle.putString("filter", user.getMajor());
+            fragment2.setArguments(bundle);
+            fragmentTransaction.replace(R.id.fragment_container, fragment2);
+            fragmentTransaction.commit();
+            manager.executePendingTransactions();
+        }
+        else{
+            Log.d("elsemain", "elsemain");
+            fragmentTransaction.commit();
+            manager.executePendingTransactions();
+        }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

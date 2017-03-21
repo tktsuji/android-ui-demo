@@ -3,6 +3,7 @@ package edu.ucsb.cs.cs185.group.a185;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -18,9 +19,11 @@ import java.util.ArrayList;
 public class FilteredPostAdapter extends BaseAdapter implements PostManager.OnUpdateListener{
     final int FILTER_BY_TAG = 1;
     final int FILTER_BY_USERNAME = 2;
+    final int FILTER_BY_PROFILE =3;
     ArrayList<Post> filtered_list;
     Context context;
     PostManager postManager = PostManager.getInstance();
+    User user = User.getInstance();
 
 
     public FilteredPostAdapter(Context context, String filter, int filterType){
@@ -35,6 +38,9 @@ public class FilteredPostAdapter extends BaseAdapter implements PostManager.OnUp
         }
         else if(filterType==FILTER_BY_USERNAME) {
             filterByUsername(filter);
+        }
+        else if(filterType == FILTER_BY_PROFILE){
+            filterByMajorAndInterests();
         }
 
     }
@@ -51,6 +57,28 @@ public class FilteredPostAdapter extends BaseAdapter implements PostManager.OnUp
                     i--;
                 }
             }
+        }
+    }
+
+    public void filterByMajorAndInterests(){
+        boolean temp[] = new boolean[filtered_list.size()];
+        for(int i=0; i<filtered_list.size(); i++) {
+            temp[i] = true;
+            if(user.getMajor() != null && filtered_list.get(i).hasTag(user.getMajor())) {
+                Log.d("if loop","if");
+                temp[i] = false;
+            }
+            for(int j=0; j<user.getTags().size(); j++) {
+                if(filtered_list.get(i).hasTag(user.getTags().get(j))) {
+                    Log.d("For loop","for");
+                    temp[i] = false;
+                }
+            }
+        }
+
+        for(int i=filtered_list.size()-1; i>=0; i--) {
+            if (temp[i])
+                filtered_list.remove(i);
         }
     }
 

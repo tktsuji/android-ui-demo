@@ -3,6 +3,7 @@ package edu.ucsb.cs.cs185.group.a185;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.ListView;
 
 public class FilteredListFragment extends Fragment{
     User user = User.getInstance();
+    FilteredPostAdapter filteredPostAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -23,7 +25,9 @@ public class FilteredListFragment extends Fragment{
         ListView listView = (ListView) view.findViewById(R.id.list_view);
         int filterType = getArguments().getInt("filterType");
         String filter = getArguments().getString("filter");
-        FilteredPostAdapter filteredPostAdapter = new FilteredPostAdapter(getActivity(), filter, filterType);
+        Log.d(filter, "filter");
+        Log.d(Integer.toString(filterType), "filterType");
+        filteredPostAdapter = new FilteredPostAdapter(getActivity(), filter, filterType);
         listView.setAdapter(filteredPostAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -35,4 +39,5 @@ public class FilteredListFragment extends Fragment{
         });
         return view;
     }
+
 }
