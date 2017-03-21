@@ -21,7 +21,9 @@ public class FilteredListFragment extends Fragment{
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.list_view, container, false);
         ListView listView = (ListView) view.findViewById(R.id.list_view);
-        FilteredPostAdapter filteredPostAdapter = new FilteredPostAdapter(getActivity(), user.getUsername(), 2);
+        int filterType = getArguments().getInt("filterType");
+        String filter = getArguments().getString("filter");
+        FilteredPostAdapter filteredPostAdapter = new FilteredPostAdapter(getActivity(), filter, filterType);
         listView.setAdapter(filteredPostAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

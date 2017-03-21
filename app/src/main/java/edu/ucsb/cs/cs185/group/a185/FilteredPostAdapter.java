@@ -26,7 +26,10 @@ public class FilteredPostAdapter extends BaseAdapter implements PostManager.OnUp
     public FilteredPostAdapter(Context context, String filter, int filterType){
         this.context = context;
         postManager.setFilteredPostListener(this);
-        filtered_list = postManager.getPostArray();
+        filtered_list = new ArrayList<Post>();
+        for(int i = 0;i<postManager.getCount(); i++){
+            filtered_list.add(postManager.getPost(i));
+        }
         if(filterType == FILTER_BY_TAG){
             filterByTag(filter);
         }
@@ -41,13 +44,11 @@ public class FilteredPostAdapter extends BaseAdapter implements PostManager.OnUp
     }
 
     public void filterByTag(String tag){
-        if(tag!=null) {
-            for (int i = 0; i < filtered_list.size(); i++) {
+        for (int i = 0; i < filtered_list.size(); i++) {
+            if(filtered_list.size()!=0) {
                 if (!filtered_list.get(i).hasTag(tag)) {
                     filtered_list.remove(i);
-                    if (i >= 1) {
-                        i--;
-                    }
+                    i--;
                 }
             }
         }
@@ -56,9 +57,9 @@ public class FilteredPostAdapter extends BaseAdapter implements PostManager.OnUp
     public void filterByUsername(String username){
         for(int i=0; i<filtered_list.size();i++){
             if(username!=null) {
-                if (!filtered_list.get(i).getUser().equals(username)) {
-                    filtered_list.remove(i);
-                    if (i >= 1) {
+                if(filtered_list.size()!=0) {
+                    if (!filtered_list.get(i).getUser().equals(username)) {
+                        filtered_list.remove(i);
                         i--;
                     }
                 }
@@ -85,6 +86,12 @@ public class FilteredPostAdapter extends BaseAdapter implements PostManager.OnUp
     public View getView(int position, View convertView, ViewGroup parent) {
         Post p = filtered_list.get(position);
         CardView cardView = new CardView(context);
+
+        LinearLayout.LayoutParams cardViewMargins = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        cardViewMargins.setMargins(5,5,5,5);
+        cardView.setContentPadding(40,20,20,20);
+
+        cardView.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.shadow));
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
@@ -98,29 +105,29 @@ public class FilteredPostAdapter extends BaseAdapter implements PostManager.OnUp
         TextView title = new TextView(context);
         title.setText(p.getTitle());
         title.setTypeface(null, Typeface.BOLD);
-        title.setTextSize(16);
-
-        TextView username = new TextView(context);
-        username.setText("Posted by: " + filtered_list.get(position).getUser());
-
-
-        for(int i=0;i <p.getTagCount();i++) {
-            TextView t = new TextView(context);
-            t.setText(p.getTag(i));
-            linearLayout.addView(t);
-        }
+        title.setTextSize(20);
+        title.setTextColor(context.getResources().getColor(R.color.colorLink));
+        title.setPadding(5,5,5,5);
+        linearLayout.addView(title);
 
         TextView content = new TextView(context);
         content.setText(p.getText());
-        content.setMaxLines(2);
-
-        linearLayout.addView(title);
+        content.setLines(2);
         linearLayout.addView(content);
+
+        TextView tags = new TextView(context);
+        String tagsLine = "";
+        for(int i = 0; i < p.getTagCount(); i++) {
+            tagsLine = tagsLine + p.getTag(i) + "   ";
+        }
+        tags.setText(tagsLine);
+        tags.setTypeface(null,Typeface.ITALIC);
+        tags.setTextColor(context.getResources().getColor(R.color.colorLink));
+        linearLayout.addView(tags);
 
         cardView.addView(linearLayout);
         cardView.setClickable(false);
         cardView.setFocusable(false);
-
 
         return cardView;
     }
