@@ -61,8 +61,9 @@ public class Post {
     }
 
     public boolean hasTag(String tag){
+        tag = tag.toLowerCase();
         for(int i=0; i<tags.size();i++){
-            if(tags.get(i).equals(tag)){
+            if(tags.get(i).toLowerCase().equals(tag)){
                 return true;
             }
         }
