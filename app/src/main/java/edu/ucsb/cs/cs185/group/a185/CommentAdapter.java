@@ -50,7 +50,8 @@ public class CommentAdapter extends BaseAdapter implements PostManager.OnUpdateL
         LinearLayout layout = new LinearLayout(context);
         layout.setOrientation(LinearLayout.HORIZONTAL);
         TextView username = new TextView(context);
-        username.setText(user.getUsername() + ": ");
+        //username.setText(user.getUsername() + ": ");
+        username.setText(post.getUsername(position) + ": ");
         TextView comment = new TextView(context);
         comment.setText(post.getComment(position));
         layout.addView(username);
