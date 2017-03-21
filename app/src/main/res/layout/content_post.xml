@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -14,40 +13,6 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context="edu.ucsb.cs.cs185.group.a185.PostActivity"
         tools:showIn="@layout/activity_post">
-            <TextView
-                android:id="@+id/big_post_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="@dimen/login_fieldTopMargin"
-                android:layout_marginLeft="@dimen/login_fieldSideMargin"
-                android:layout_marginRight="@dimen/login_fieldSideMargin"/>
-
-            <TextView
-                android:id="@+id/big_post_username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:layout_marginBottom="@dimen/login_fieldTopMargin"
-                android:layout_marginLeft="@dimen/login_fieldSideMargin"
-                android:layout_marginRight="@dimen/login_fieldSideMargin"/>
-
-            <TextView
-                android:id="@+id/big_post_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/login_fieldTopMargin"
-                android:layout_marginLeft="@dimen/login_fieldSideMargin"
-                android:layout_marginRight="@dimen/login_fieldSideMargin"/>
-
-            <TextView
-                android:id="@+id/big_post_tags"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/login_fieldTopMargin"
-                android:layout_marginLeft="@dimen/login_fieldSideMargin"
-                android:layout_marginRight="@dimen/login_fieldSideMargin"/>
 
             <ListView
                 android:id="@+id/comment_list"
@@ -64,7 +29,7 @@
                 android:id="@+id/edit_comment_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="post"/>
+                android:text="Comment"/>
 
     </LinearLayout>
 

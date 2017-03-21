@@ -29,6 +29,28 @@ public class PostActivity extends AppCompatActivity {
 
         postItem = postManager.getPost(position);
 
+        /*TextView title = (TextView) findViewById(R.id.big_post_title);
+        TextView username = (TextView)findViewById(R.id.big_post_username);
+        TextView content = (TextView) findViewById(R.id.big_post_content);
+        TextView tags = (TextView) findViewById(R.id.big_post_tags);
+
+        title.setText(postItem.getTitle());
+        username.setText(postItem.getUser());
+        content.setText(postItem.getText());
+        String tags_list = "";
+        for (int i = 0; i < postItem.getTagCount(); i ++) {
+            tags_list = tags_list + postItem.getTag(i) + ", ";
+        }
+        tags.setText(tags_list); */
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // SET UP LISTVIEW
+        ListView commentList = (ListView)findViewById(R.id.comment_list);
+
+        // SET UP HEADER
+        View header = getLayoutInflater().inflate(R.layout.header_postactivity, commentList, false);
+        commentList.addHeaderView(header, null, false);
         TextView title = (TextView) findViewById(R.id.big_post_title);
         TextView username = (TextView)findViewById(R.id.big_post_username);
         TextView content = (TextView) findViewById(R.id.big_post_content);
@@ -43,9 +65,7 @@ public class PostActivity extends AppCompatActivity {
         }
         tags.setText(tags_list);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        ListView commentList = (ListView)findViewById(R.id.comment_list);
+        // SET UP ADAPTER
         CommentAdapter adapter = new CommentAdapter(this, position);
         commentList.setAdapter(adapter);
 
