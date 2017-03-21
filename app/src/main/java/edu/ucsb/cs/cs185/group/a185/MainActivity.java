@@ -151,6 +151,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
         } else if (id == R.id.ic_folder_shared) {
+            getSupportActionBar().setTitle("My Posts");
             FragmentManager manager = getFragmentManager();
             FragmentTransaction fragmentTransaction = manager.beginTransaction();
             FilteredListFragment fragment = new FilteredListFragment();
@@ -167,6 +168,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             user.purgeUser();
             startActivity(intent);
         } else if(id == R.id.my_feed){
+            getSupportActionBar().setTitle("Main Feed");
             FragmentManager manager = getFragmentManager();
             FragmentTransaction fragmentTransaction = manager.beginTransaction();
             ListFragment fragment = new ListFragment();
