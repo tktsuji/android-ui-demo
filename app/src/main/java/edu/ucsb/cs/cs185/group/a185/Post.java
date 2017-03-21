@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Post {
     private String title, text, user;
-    private ArrayList<String> tags, comments;
+    private ArrayList<String> tags, comments, usernames;
 
     public Post(String username){
         title = "";
@@ -17,16 +17,17 @@ public class Post {
         user = username;
         tags = new ArrayList<String>();
         comments = new ArrayList<String>();
+        usernames = new ArrayList<String>();
     }
 
-    public Post(String title, String text, String user, ArrayList<String> tags, ArrayList<String> comments) {
+    public Post(String title, String text, String user, ArrayList<String> tags, ArrayList<String> comments, ArrayList<String> usernames) {
         this.title = title;
         this.text = text;
         this.user = user;
         this.tags = tags;
         this.comments = comments;
+        this.usernames = usernames;
     }
-
     public void setUser(String user){
         this.user = user;
     }
@@ -82,5 +83,17 @@ public class Post {
 
     public int getCommentCount(){
         return comments.size();
+    }
+
+    public void addUsername(String username) {
+        this.usernames.add(username);
+    }
+
+    public String getUsername(int index) {
+        return usernames.get(index);
+    }
+
+    public int getUsernameCount() {
+        return usernames.size();
     }
 }
