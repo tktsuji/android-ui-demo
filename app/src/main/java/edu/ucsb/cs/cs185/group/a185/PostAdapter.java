@@ -61,19 +61,25 @@ public class PostAdapter extends BaseAdapter implements PostManager.OnUpdateList
         TextView title = new TextView(context);
         title.setText(p.getTitle());
         title.setTypeface(null, Typeface.BOLD);
-        title.setTextSize(16);
+        title.setTextSize(18);
+
 
         TextView username = new TextView(context);
         username.setText("Posted by: " + user.getUsername());
+
 
         TextView content = new TextView(context);
         content.setText(p.getText());
         content.setMaxLines(2);
 
         linearLayout.addView(title);
+        linearLayout.addView(username);
         for(int i=0;i <p.getTagCount();i++) {
             TextView t = new TextView(context);
             t.setText(p.getTag(i));
+            if(i < p.getTagCount()-1){
+                t.append(", ");
+            }
             linearLayout.addView(t);
         }
         linearLayout.addView(content);
