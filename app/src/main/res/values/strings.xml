@@ -62,6 +62,7 @@
         <item>Geography</item>
         <item>Mathematics</item>
         <item>Mechanical Engineering</item>
+        <item>Physics</item>
         <item>Psychology</item>
         <item>Sociology</item>
         <item>Theater</item>
@@ -97,10 +98,33 @@
         <item>Android Development</item>
         <item>iOS Development</item>
         <item>Web Development</item>
-        <item>Natural Language Proc</item>
+        <item>Natural Language Processing</item>
         <item>Assembly</item>
         <item>Databases</item>
         <item>Graphics</item>
+
+        <item>Anthropology</item>
+        <item>Art</item>
+        <item>Asian American Studies</item>
+        <item>Black Studies</item>
+        <item>Chemical Engineering</item>
+        <item>Chicano Studies</item>
+        <item>Communication</item>
+        <item>Computer Engineering</item>
+        <item>Computer Science</item>
+        <item>Dance</item>
+        <item>Earth Science</item>
+        <item>Economics</item>
+        <item>English</item>
+        <item>Environmental Studies</item>
+        <item>Film and Media</item>
+        <item>Geography</item>
+        <item>Mathematics</item>
+        <item>Mechanical Engineering</item>
+        <item>Physics</item>
+        <item>Psychology</item>
+        <item>Sociology</item>
+        <item>Theater</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->

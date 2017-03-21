@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/mainAddPost"
-        android:icon="@drawable/ic_add_black_24dp"
+        android:icon="@drawable/ic_add_circle"
         android:title="Create New Post"
         app:showAsAction="always" />
 </menu>

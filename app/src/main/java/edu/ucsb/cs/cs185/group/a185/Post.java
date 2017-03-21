@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Post {
     private String title, text, user;
-    private ArrayList<String> tags, comments;
+    private ArrayList<String> tags, comments, usernames;
 
     public Post(String username){
         title = "";
@@ -19,12 +19,13 @@ public class Post {
         comments = new ArrayList<String>();
     }
 
-    public Post(String title, String text, String user, ArrayList<String> tags, ArrayList<String> comments) {
+    public Post(String title, String text, String user, ArrayList<String> tags, ArrayList<String> comments, ArrayList<String> usernames) {
         this.title = title;
         this.text = text;
         this.user = user;
         this.tags = tags;
         this.comments = comments;
+        this.usernames = usernames;
     }
 
     public void setUser(String user){
