@@ -12,7 +12,7 @@
             android:title="My Posts" />
         <item
             android:id="@+id/my_feed"
-            android:icon="@drawable/ic_shortcut_chrome_reader_mode"
+            android:icon="@drawable/ic_cast_connected"
             android:title="Main Feed"
             />
         <item
