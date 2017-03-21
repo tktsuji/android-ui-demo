@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 public class PostActivity extends AppCompatActivity {
     PostManager postManager = PostManager.getInstance();
+    User user = User.getInstance();
     Post postItem;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ public class PostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 postItem.addComment(editComment.getText().toString());
+                postItem.addUsername(user.getUsername().toString());
                 editComment.clearFocus();
                 editComment.setText("");
                 postManager.updateComments();
