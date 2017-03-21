@@ -31,20 +31,6 @@ public class PostActivity extends AppCompatActivity {
 
         postItem = postManager.getPost(position);
 
-        /*TextView title = (TextView) findViewById(R.id.big_post_title);
-        TextView username = (TextView)findViewById(R.id.big_post_username);
-        TextView content = (TextView) findViewById(R.id.big_post_content);
-        TextView tags = (TextView) findViewById(R.id.big_post_tags);
-
-        title.setText(postItem.getTitle());
-        username.setText(postItem.getUser());
-        content.setText(postItem.getText());
-        String tags_list = "";
-        for (int i = 0; i < postItem.getTagCount(); i ++) {
-            tags_list = tags_list + postItem.getTag(i) + ", ";
-        }
-        tags.setText(tags_list); */
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // SET UP LISTVIEW
@@ -64,6 +50,7 @@ public class PostActivity extends AppCompatActivity {
 
         title.setText(postItem.getTitle());
         username.setText("Posted by: " + postItem.getUser());
+        username.setTypeface(null,Typeface.BOLD);
         content.setText(postItem.getText());
         String tags_list = "";
         for (int i = 0; i < postItem.getTagCount(); i ++) {
