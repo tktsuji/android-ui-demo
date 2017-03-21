@@ -30,6 +30,8 @@ public class ListFragment extends Fragment {
         View view = inflater.inflate(R.layout.list_view, container, false);
         ListView listView = (ListView) view.findViewById(R.id.list_view);
         PostAdapter postAdapter = new PostAdapter(getActivity());
+        listView.setDivider(null);
+        listView.setDividerHeight(0);
         listView.setAdapter(postAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
