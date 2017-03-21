@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLightGray"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTags"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/login_editTextHeight"
+            android:layout_marginBottom="@dimen/login_fieldTopMargin"
+            android:layout_marginLeft="@dimen/login_fieldSideMargin"
+            android:layout_marginTop="4dp"
+            android:layout_toLeftOf="@+id/addTagButton"
+            android:background="@drawable/shadow"
+            android:hint="Add tag..."
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingLeft="6dp"
+            android:selectAllOnFocus="true"
+            android:textSize="@dimen/login_text" />
+
+        <ImageView
+            android:id="@+id/addTagButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/ic_add_circle" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/edit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorAccent"
+        android:layout_marginTop="@dimen/login_fieldTopMargin"
+        android:layout_marginLeft="@dimen/login_fieldSideMargin"
+        android:text="Post" />
+
+    <Button
+        android:id="@+id/edit_cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/edit_button"
+        android:layout_toRightOf="@id/edit_button"
+        android:layout_toEndOf="@id/edit_button"
+        android:layout_marginLeft="16dp"
+        android:text="Cancel" />
+
+    </RelativeLayout>
+
+</LinearLayout>

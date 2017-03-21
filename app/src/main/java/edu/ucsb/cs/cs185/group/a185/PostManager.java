@@ -11,7 +11,7 @@ public class PostManager {
 
     private static PostManager postManager;
     private final ArrayList<Post> posts;
-    private OnUpdateListener postListener, commentListener;
+    private OnUpdateListener postListener, commentListener, filteredPostListener;
 
     public interface OnUpdateListener {
         public void onUpdate();
@@ -24,6 +24,8 @@ public class PostManager {
     public void setPostListener(OnUpdateListener listener){
         this.postListener = listener;
     }
+
+    public void setFilteredPostListener(OnUpdateListener listener) {this.filteredPostListener = listener;}
 
     private PostManager(){
         posts = new ArrayList<Post>(Arrays.asList(
@@ -52,6 +54,9 @@ public class PostManager {
     public void addPost(Post p){
         posts.add(p);
         postListener.onUpdate();
+        if(filteredPostListener != null){
+            filteredPostListener.onUpdate();
+        }
     }
 
     public void updateComments(){
@@ -62,6 +67,9 @@ public class PostManager {
         posts.clear();
         if (postListener != null) {
             postListener.onUpdate();
+        }
+        if(filteredPostListener != null){
+            filteredPostListener.onUpdate();
         }
     }
 

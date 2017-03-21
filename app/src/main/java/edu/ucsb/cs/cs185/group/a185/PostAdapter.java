@@ -1,8 +1,15 @@
 package edu.ucsb.cs.cs185.group.a185;
 
+import android.app.ActionBar;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v7.widget.CardView;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -48,6 +55,12 @@ public class PostAdapter extends BaseAdapter implements PostManager.OnUpdateList
     public View getView(int position, View convertView, ViewGroup parent) {
         Post p = postManager.getPost(position);
         CardView cardView = new CardView(context);
+
+        LinearLayout.LayoutParams cardViewMargins = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        cardViewMargins.setMargins(5,5,5,5);
+        cardView.setContentPadding(40,20,20,20);
+
+        cardView.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.shadow));
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
@@ -61,27 +74,29 @@ public class PostAdapter extends BaseAdapter implements PostManager.OnUpdateList
         TextView title = new TextView(context);
         title.setText(p.getTitle());
         title.setTypeface(null, Typeface.BOLD);
-        title.setTextSize(16);
-
-        TextView username = new TextView(context);
-        username.setText("Posted by: " + user.getUsername());
+        title.setTextSize(20);
+        title.setTextColor(context.getResources().getColor(R.color.colorLink));
+        title.setPadding(5,5,5,5);
+        linearLayout.addView(title);
 
         TextView content = new TextView(context);
         content.setText(p.getText());
-        content.setMaxLines(2);
-
-        linearLayout.addView(title);
-        for(int i=0;i <p.getTagCount();i++) {
-            TextView t = new TextView(context);
-            t.setText(p.getTag(i));
-            linearLayout.addView(t);
-        }
+        content.setLines(2);
         linearLayout.addView(content);
+
+        TextView tags = new TextView(context);
+        String tagsLine = "";
+        for(int i = 0; i < p.getTagCount(); i++) {
+            tagsLine = tagsLine + p.getTag(i) + "   ";
+        }
+        tags.setText(tagsLine);
+        tags.setTypeface(null,Typeface.ITALIC);
+        tags.setTextColor(context.getResources().getColor(R.color.colorLink));
+        linearLayout.addView(tags);
 
         cardView.addView(linearLayout);
         cardView.setClickable(false);
         cardView.setFocusable(false);
-
 
         return cardView;
     }

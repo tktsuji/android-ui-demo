@@ -15,15 +15,17 @@ import java.util.ArrayList;
  * Created by wells on 3/18/17.
  */
 
-public class FilteredPostAdapter extends BaseAdapter{
+public class FilteredPostAdapter extends BaseAdapter implements PostManager.OnUpdateListener{
     final int FILTER_BY_TAG = 1;
     final int FILTER_BY_USERNAME = 2;
     ArrayList<Post> filtered_list;
     Context context;
     PostManager postManager = PostManager.getInstance();
 
+
     public FilteredPostAdapter(Context context, String filter, int filterType){
         this.context = context;
+        postManager.setFilteredPostListener(this);
         filtered_list = postManager.getPostArray();
         if(filterType == FILTER_BY_TAG){
             filterByTag(filter);
@@ -34,20 +36,32 @@ public class FilteredPostAdapter extends BaseAdapter{
 
     }
 
+    public void onUpdate(){
+        notifyDataSetChanged();
+    }
+
     public void filterByTag(String tag){
-        for(int i =0; i<postManager.getCount();i++){
-            if( !filtered_list.get(i).hasTag(tag)){
-                filtered_list.remove(i);
-                i--;
+        if(tag!=null) {
+            for (int i = 0; i < filtered_list.size(); i++) {
+                if (!filtered_list.get(i).hasTag(tag)) {
+                    filtered_list.remove(i);
+                    if (i >= 1) {
+                        i--;
+                    }
+                }
             }
         }
     }
 
     public void filterByUsername(String username){
-        for(int i=0; i<postManager.getCount();i++){
-            if(!filtered_list.get(i).getUser().equals(username)){
-                filtered_list.remove(i);
-                i--;
+        for(int i=0; i<filtered_list.size();i++){
+            if(username!=null) {
+                if (!filtered_list.get(i).getUser().equals(username)) {
+                    filtered_list.remove(i);
+                    if (i >= 1) {
+                        i--;
+                    }
+                }
             }
         }
     }

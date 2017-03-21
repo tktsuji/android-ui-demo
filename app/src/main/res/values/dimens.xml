@@ -21,5 +21,8 @@
     <dimen name="tag_padding">4dp</dimen>
     <dimen name="tag_paddingRight">32dp</dimen>
 
+    <dimen name="list_view_horizontal_margin">0dp</dimen>
+    <dimen name="list_view_vertical_margin">0dp</dimen>
+
     <dimen name="createAccount_text">20sp</dimen>
 </resources>

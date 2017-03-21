@@ -14,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -24,6 +25,8 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -107,6 +110,17 @@ public class EditProfileActivity extends AppCompatActivity {
         ArrayAdapter<String> adapterTags = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, userTags);
         tagField.setAdapter(adapterTags);
+
+        // SET UP LISTENER ON AUTOCOMPLETE ITEM
+        tagField.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View arg1, int pos,
+                                    long id) {
+                newUserTags.add(tagField.getText().toString());
+                tagsListAdapter.notifyDataSetChanged();
+                tagField.setText("");
+            }
+        });
 
 
         // SET FIELDS TO CURRENT USER'S INFO
