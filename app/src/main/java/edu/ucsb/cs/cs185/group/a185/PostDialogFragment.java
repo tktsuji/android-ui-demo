@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -103,6 +104,17 @@ public class PostDialogFragment extends DialogFragment {
         ArrayAdapter<String> adapterTags = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_dropdown_item_1line, userTags);
         tagField.setAdapter(adapterTags);
+
+        // SET UP LISTENER ON AUTOCOMPLETE ITEM
+        tagField.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View arg1, int pos,
+                                    long id) {
+                addedTags.add(tagField.getText().toString());
+                tagsListAdapter.notifyDataSetChanged();
+                tagField.setText("");
+            }
+        });
 
         // HANDLE ADD TAG BUTTON
         addTagButton.setOnClickListener(new View.OnClickListener() {
