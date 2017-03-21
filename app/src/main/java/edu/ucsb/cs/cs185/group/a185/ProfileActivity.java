@@ -37,18 +37,26 @@ public class ProfileActivity extends AppCompatActivity {
         if (user.getUserLevel() != null)
         profileGradYear.setText(user.getUserLevel());
         TextView profileTags = (TextView) findViewById(R.id.profileTags);
-        if (user.getTags() != null)
-            profileTags.setText(user.getTags().toString());
+        String tags = "";
+        if (user.getTags() != null) {
+            for(int i = 0; i < user.getTags().size(); i++) {
+                if (i != user.getTags().size() - 1)
+                    tags = tags + user.getTags().get(i) + ", ";
+                else
+                    tags = tags + user.getTags().get(i);
+            }
+        }
+        profileTags.setText(tags);
         avatar = (ImageView) findViewById(R.id.avatar);
         avatar.setImageBitmap(getSmallBitmap(this, user));
 
-        // TEST
+        /*// TEST
         if (user.getTags().size() != 0) {
             profileTags.setText(profileTags.getText().toString());
         }
         else {
             profileTags.setText("");
-        }
+        }*/
     }
 
     @Override
