@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context="edu.ucsb.cs.cs185.group.a185.EditProfileActivity"
+    tools:context="edu.ucsb.cs.inQuery.group.a185.EditProfileActivity"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 

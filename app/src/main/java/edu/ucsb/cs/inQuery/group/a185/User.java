@@ -1,8 +1,7 @@
-package edu.ucsb.cs.cs185.group.a185;
+package edu.ucsb.cs.inQuery.group.a185;
 
 import android.net.Uri;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 

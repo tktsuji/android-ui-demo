@@ -1,4 +1,4 @@
-package edu.ucsb.cs.cs185.group.a185;
+package edu.ucsb.cs.inQuery.group.a185;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -6,11 +6,9 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;

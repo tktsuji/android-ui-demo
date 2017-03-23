@@ -1,22 +1,13 @@
-package edu.ucsb.cs.cs185.group.a185;
+package edu.ucsb.cs.inQuery.group.a185;
 
-import android.app.ActionBar;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v7.widget.CardView;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.UnderlineSpan;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 
 /**
  * Created by calvinwan on 3/16/17.

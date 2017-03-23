@@ -1,4 +1,4 @@
-package edu.ucsb.cs.cs185.group.a185;
+package edu.ucsb.cs.inQuery.group.a185;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -9,7 +9,6 @@ import android.support.v7.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -17,7 +16,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 

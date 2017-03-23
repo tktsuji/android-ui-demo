@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:context="edu.ucsb.cs.cs185.group.a185.CreateAnAccountActivity">
+        tools:context="edu.ucsb.cs.inQuery.group.a185.CreateAnAccountActivity">
         <EditText
             android:id="@+id/umailText"
             android:layout_height="@dimen/login_editTextHeight"

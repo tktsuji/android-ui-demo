@@ -1,4 +1,4 @@
-package edu.ucsb.cs.cs185.group.a185;
+package edu.ucsb.cs.inQuery.group.a185;
 
 import android.content.Context;
 import android.graphics.Bitmap;

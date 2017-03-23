@@ -1,6 +1,5 @@
-package edu.ucsb.cs.cs185.group.a185;
+package edu.ucsb.cs.inQuery.group.a185;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="edu.ucsb.cs.cs185.group.a185">
+    package="edu.ucsb.cs.inQuery.group.a185">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustResize|stateHidden">
         <activity
-            android:name=".LoginActivity"
+            android:name="edu.ucsb.cs.inQuery.group.a185.LoginActivity"
             android:label=""
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden">
@@ -27,13 +27,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CreateAnAccountActivity"
+            android:name="edu.ucsb.cs.inQuery.group.a185.CreateAnAccountActivity"
             android:label="Create Account"
-            android:parentActivityName=".LoginActivity"
+            android:parentActivityName="edu.ucsb.cs.inQuery.group.a185.LoginActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".MainActivity"
+            android:name="edu.ucsb.cs.inQuery.group.a185.MainActivity"
             android:label="Feed"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -45,34 +45,34 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".ProfileActivity"
+            android:name="edu.ucsb.cs.inQuery.group.a185.ProfileActivity"
             android:exported="true"
             android:label="@string/title_activity_profile"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="edu.ucsb.cs.inQuery.group.a185.MainActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.ucsb.cs.cs185.group.a185.MainActivity" />
+                android:value="edu.ucsb.cs.inQuery.group.a185.MainActivity" />
         </activity>
         <activity
-            android:name=".EditProfileActivity"
+            android:name="edu.ucsb.cs.inQuery.group.a185.EditProfileActivity"
             android:exported="true"
             android:label="@string/title_activity_edit_profile"
-            android:parentActivityName=".ProfileActivity"
+            android:parentActivityName="edu.ucsb.cs.inQuery.group.a185.ProfileActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.ucsb.cs.cs185.group.a185.ProfileActivity" />
+                android:value="edu.ucsb.cs.inQuery.group.a185.ProfileActivity" />
         </activity>
         <activity
-            android:name=".PostActivity"
+            android:name="edu.ucsb.cs.inQuery.group.a185.PostActivity"
             android:label="View Post"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="edu.ucsb.cs.inQuery.group.a185.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.ucsb.cs.cs185.group.a185.MainActivity" />
+                android:value="edu.ucsb.cs.inQuery.group.a185.MainActivity" />
         </activity>
     </application>
 
